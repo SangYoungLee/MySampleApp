@@ -14,4 +14,10 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
+
+    @Test
+    fun softKeywordTest() {
+        val by = 2
+        assertEquals(by, 2)
+    }
 }
