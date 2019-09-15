@@ -3,10 +3,9 @@ import Versions.kotlinVersion
 object BuildPlugins {
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.gradleVersion}"
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    const val navigationGradlePlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
 
     const val androidApplication = "com.android.application"
-    const val kotlinAndroid = "kotlin-android"
-    const val kotlinAndroidExtensions = "kotlin-android-extensions"
 }
 
 object Versions {
@@ -23,6 +22,11 @@ object Versions {
     const val jetpack = "1.0.2"
     const val constraintLayout = "1.1.3"
     const val ktx = "1.1.0"
+
+    const val lifecycle = "2.1.0"
+    const val room = "2.2.0-rc01"
+
+    const val navigation = "2.1.0"
 }
 
 object Libraries {
@@ -30,6 +34,17 @@ object Libraries {
     const val appCompat        = "androidx.appcompat:appcompat:${Versions.jetpack}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val ktxCore          = "androidx.core:core-ktx:${Versions.ktx}"
+
+    const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+    const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+    const val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
+
+    const val room = "androidx.room:room-runtime:${Versions.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+
+    const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    const val navigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
 }
 
 object TestLibraries {

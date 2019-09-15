@@ -3,8 +3,12 @@ import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 
 plugins {
     id(BuildPlugins.androidApplication)
-    id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.android.extensions")
+//    id("org.jetbrains.kotlin.android")
+//    id("org.jetbrains.kotlin.android.extensions")
+    kotlin("android")
+    kotlin("android.extensions")
+    kotlin("kapt")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 configure<BaseAppModuleExtension> {
@@ -40,6 +44,17 @@ dependencies {
     "implementation"(Libraries.appCompat)
     "implementation"(Libraries.ktxCore)
     "implementation"(Libraries.constraintLayout)
+
+    "implementation"(Libraries.lifecycle)
+    "kapt"(Libraries.lifecycleCompiler)
+    "implementation"(Libraries.viewModel)
+
+    "implementation"(Libraries.room)
+    "kapt"(Libraries.roomCompiler)
+    "implementation"(Libraries.roomKtx)
+
+    "implementation"(Libraries.navigationFragment)
+    "implementation"(Libraries.navigationUI)
 
     "testImplementation" (TestLibraries.junit4)
     "androidTestImplementation" (TestLibraries.testRunner)
