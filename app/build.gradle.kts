@@ -36,6 +36,10 @@ configure<BaseAppModuleExtension> {
             isDebuggable = true
         }
     }
+
+    dataBinding {
+        isEnabled = true
+    }
 }
 
 dependencies {
