@@ -7,9 +7,9 @@ import com.example.mysampleapp.entity.Task
  */
 interface ITaskRepository {
 
-    fun getTasks(): List<Task>
+    suspend fun getTasks(): List<Task>
 
-    fun getTask(taskId: String): Task?
+    suspend fun getTask(taskId: String): Task?
 
-    fun saveTask(task: Task)
+    suspend fun saveTask(task: Task)
 }

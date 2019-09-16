@@ -10,7 +10,7 @@ class GetTasksUseCase(
     private val taskRepository: ITaskRepository
 ) {
 
-    operator fun invoke(): List<Task> {
+    suspend operator fun invoke(): List<Task> {
         return taskRepository.getTasks()
     }
 }

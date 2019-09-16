@@ -7,7 +7,7 @@ plugins {
 //    id("org.jetbrains.kotlin.android.extensions")
     kotlin("android")
     kotlin("android.extensions")
-    kotlin("kapt")
+    id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
 }
 

@@ -9,15 +9,15 @@ class DefaultTaskRepository(
     private val localTaskDataSource: LocalTaskDataSource
 ) : ITaskRepository {
 
-    override fun getTasks(): List<Task> {
+    override suspend fun getTasks(): List<Task> {
         return localTaskDataSource.getTasks()
     }
 
-    override fun getTask(taskId: String): Task? {
+    override suspend fun getTask(taskId: String): Task? {
         return localTaskDataSource.getTask(taskId)
     }
 
-    override fun saveTask(task: Task) {
+    override suspend fun saveTask(task: Task) {
         localTaskDataSource.saveTask(task)
     }
 }

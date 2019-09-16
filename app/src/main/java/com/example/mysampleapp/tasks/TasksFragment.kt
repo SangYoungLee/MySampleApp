@@ -22,13 +22,18 @@ class TasksFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.tasks_fragment, container, false)
+        binding = TasksFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val tasksAdapter = TasksAdapter()
+        binding.rvTasks.adapter = tasksAdapter
 
         viewModel.refresh()
     }

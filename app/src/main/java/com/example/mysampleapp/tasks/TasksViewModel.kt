@@ -2,9 +2,11 @@ package com.example.mysampleapp.tasks
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.mysampleapp.base.viewmodel.BaseViewModel
 import com.example.mysampleapp.domain.GetTasksUseCase
 import com.example.mysampleapp.entity.Task
+import kotlinx.coroutines.launch
 
 class TasksViewModel(
     private val getTasksUseCase: GetTasksUseCase
@@ -19,10 +21,12 @@ class TasksViewModel(
     fun refresh() {
         _dataLoading.value = true
 
-        val taskDataList = getTasksUseCase()
-        _taskList.value = taskDataList
+        viewModelScope.launch {
+            val taskDataList = getTasksUseCase()
+            _taskList.value = taskDataList
 
-        _dataLoading.value = false
+            _dataLoading.value = false
+        }
     }
 
     fun onAddClick() {
