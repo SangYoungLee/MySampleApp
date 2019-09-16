@@ -22,10 +22,10 @@ object Versions {
     const val jetpack = "1.0.2"
     const val constraintLayout = "1.1.3"
     const val ktx = "1.1.0"
+    const val coroutineVersion = "1.3.1"
 
     const val lifecycle = "2.1.0"
     const val room = "2.2.0-rc01"
-
     const val navigation = "2.1.0"
 }
 
@@ -45,6 +45,8 @@ object Libraries {
 
     const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+
+    const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutineVersion}"
 }
 
 object TestLibraries {
