@@ -22,7 +22,17 @@
                     android:id="@+id/rv_tasks"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:items="@{viewModel.taskList"/>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add_white_24dp"
+                android:onClick="@{viewModel::onAddClick}"
+                app:layout_anchor="@id/refresh_layout"
+                app:layout_anchorGravity="bottom|right"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
