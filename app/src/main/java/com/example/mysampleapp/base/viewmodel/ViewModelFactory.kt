@@ -11,7 +11,8 @@ import com.example.mysampleapp.tasks.TasksViewModel
 /**
  * Created By lsy2014 on 2019-09-16
  */
-class ViewModelFactory(val taskRepository: ITaskRepository) : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory(private val taskRepository: ITaskRepository)
+    : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

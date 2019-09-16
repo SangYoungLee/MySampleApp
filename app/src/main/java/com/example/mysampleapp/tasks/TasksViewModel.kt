@@ -9,6 +9,7 @@ import com.example.mysampleapp.entity.Task
 class TasksViewModel(
     private val getTasksUseCase: GetTasksUseCase
 ) : BaseViewModel() {
+
     private val _dataLoading = MutableLiveData<Boolean>()
     val dataLoading: LiveData<Boolean> = _dataLoading
 
