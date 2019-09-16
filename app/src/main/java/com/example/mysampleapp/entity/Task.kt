@@ -9,5 +9,5 @@ import java.util.*
 data class Task(
     @ColumnInfo(name = "title") val title: String,
     @ColumnInfo(name = "contents") val contents: String,
-    @PrimaryKey @ColumnInfo(name = "taskId") val id: String? = UUID.randomUUID().toString()
+    @PrimaryKey @ColumnInfo(name = "taskId") val id: String = UUID.randomUUID().toString()
 )

@@ -16,8 +16,8 @@ class ViewModelFactory(private val taskRepository: ITaskRepository)
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return (when (modelClass) {
-            TasksViewModel::class -> TasksViewModel(
+        return (when {
+            modelClass.isAssignableFrom(TasksViewModel::class.java) -> TasksViewModel(
                 GetTasksUseCase(taskRepository)
             )
 
@@ -27,5 +27,5 @@ class ViewModelFactory(private val taskRepository: ITaskRepository)
 }
 
 fun Fragment.getViewModelFactory(): ViewModelProvider.Factory {
-    return ViewModelFactory((context as TodoApplication).taskRepository)
+    return ViewModelFactory((context!!.applicationContext as TodoApplication).taskRepository)
 }

@@ -15,7 +15,7 @@ class TasksViewModel(
     private val _dataLoading = MutableLiveData<Boolean>()
     val dataLoading: LiveData<Boolean> = _dataLoading
 
-    private val _taskList = MutableLiveData<List<Task>>()
+    private val _taskList = MutableLiveData<List<Task>>().apply { value = emptyList() }
     val taskList: LiveData<List<Task>> = _taskList
 
     fun refresh() {

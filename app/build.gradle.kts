@@ -7,7 +7,7 @@ plugins {
 //    id("org.jetbrains.kotlin.android.extensions")
     kotlin("android")
     kotlin("android.extensions")
-    id("kotlin-kapt")
+    kotlin("kapt")
     id("androidx.navigation.safeargs.kotlin")
 }
 
@@ -39,6 +39,7 @@ configure<BaseAppModuleExtension> {
 
     dataBinding {
         isEnabled = true
+        isEnabledForTests = true
     }
 }
 
@@ -48,6 +49,8 @@ dependencies {
     "implementation"(Libraries.appCompat)
     "implementation"(Libraries.ktxCore)
     "implementation"(Libraries.constraintLayout)
+
+    "kapt"(Libraries.dataBindingCompiler)
 
     "implementation"(Libraries.lifecycle)
     "kapt"(Libraries.lifecycleCompiler)
