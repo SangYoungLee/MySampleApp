@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.mysampleapp.R
 import com.example.mysampleapp.base.BaseFragment
 import com.example.mysampleapp.base.viewmodel.getViewModelFactory
@@ -32,9 +32,19 @@ class TasksFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        view.findViewById<View>(R.id.fab_add)?.setOnClickListener {
+            navigateToAddTask()
+        }
+
         val tasksAdapter = TasksAdapter()
         binding.rvTasks.adapter = tasksAdapter
 
         viewModel.refresh()
+    }
+
+    private fun navigateToAddTask() {
+        val action = TasksFragmentDirections
+            .actionTasksFragmentDestToAddTaskFragment("")
+        findNavController().navigate(action)
     }
 }
