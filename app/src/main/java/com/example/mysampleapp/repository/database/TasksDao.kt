@@ -1,4 +1,4 @@
-package com.example.mysampleapp.base.repository.database
+package com.example.mysampleapp.repository.database
 
 import androidx.room.Dao
 import androidx.room.Insert

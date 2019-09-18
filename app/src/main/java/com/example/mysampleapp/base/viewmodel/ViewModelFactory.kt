@@ -3,9 +3,11 @@ package com.example.mysampleapp.base.viewmodel
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.mysampleapp.addtask.AddTaskViewModel
 import com.example.mysampleapp.application.TodoApplication
-import com.example.mysampleapp.base.repository.ITaskRepository
+import com.example.mysampleapp.repository.ITaskRepository
 import com.example.mysampleapp.domain.GetTasksUseCase
+import com.example.mysampleapp.domain.SaveTaskUseCase
 import com.example.mysampleapp.tasks.TasksViewModel
 
 /**
@@ -19,6 +21,10 @@ class ViewModelFactory(private val taskRepository: ITaskRepository)
         return (when {
             modelClass.isAssignableFrom(TasksViewModel::class.java) -> TasksViewModel(
                 GetTasksUseCase(taskRepository)
+            )
+
+            modelClass.isAssignableFrom(AddTaskViewModel::class.java) -> AddTaskViewModel(
+                SaveTaskUseCase(taskRepository)
             )
 
             else -> throw IllegalStateException("Not matching ViewModel Class")

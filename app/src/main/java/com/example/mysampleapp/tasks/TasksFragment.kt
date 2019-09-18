@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.mysampleapp.R
 import com.example.mysampleapp.base.BaseFragment
 import com.example.mysampleapp.base.viewmodel.getViewModelFactory
@@ -16,6 +17,8 @@ class TasksFragment : BaseFragment() {
     private lateinit var binding: TasksFragmentBinding
 
     private val viewModel by viewModels<TasksViewModel> { getViewModelFactory() }
+
+    private val args by navArgs<TasksFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +42,9 @@ class TasksFragment : BaseFragment() {
         val tasksAdapter = TasksAdapter()
         binding.rvTasks.adapter = tasksAdapter
 
-        viewModel.refresh()
+        arguments?.let {
+            if (args.changeState.isSuccess()) viewModel.refresh()
+        } ?: viewModel.refresh()
     }
 
     private fun navigateToAddTask() {

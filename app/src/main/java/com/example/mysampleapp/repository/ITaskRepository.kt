@@ -1,5 +1,6 @@
-package com.example.mysampleapp.base.repository
+package com.example.mysampleapp.repository
 
+import com.example.mysampleapp.base.data.Result
 import com.example.mysampleapp.entity.Task
 
 /**
@@ -11,5 +12,5 @@ interface ITaskRepository {
 
     suspend fun getTask(taskId: String): Task?
 
-    suspend fun saveTask(task: Task)
+    suspend fun saveTask(task: Task): Result<Boolean>
 }
