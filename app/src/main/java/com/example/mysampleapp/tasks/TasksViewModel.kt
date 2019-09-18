@@ -18,6 +18,9 @@ class TasksViewModel(
     private val _taskList = MutableLiveData<List<Task>>().apply { value = emptyList() }
     val taskList: LiveData<List<Task>> = _taskList
 
+    private val _moveDetail = MutableLiveData<String>()
+    val moveDetail: LiveData<String> = _moveDetail
+
     fun refresh() {
         _dataLoading.value = true
 
@@ -29,7 +32,7 @@ class TasksViewModel(
         }
     }
 
-    fun onAddClick() {
-
+    fun openTask(taskId: String) {
+        _moveDetail.value = taskId
     }
 }
