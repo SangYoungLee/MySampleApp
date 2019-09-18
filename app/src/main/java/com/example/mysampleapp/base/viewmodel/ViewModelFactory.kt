@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.mysampleapp.application.TodoApplication
-import com.example.mysampleapp.base.repository.ITaskRepository
+import com.example.mysampleapp.repository.ITaskRepository
 import com.example.mysampleapp.domain.GetTasksUseCase
 import com.example.mysampleapp.tasks.TasksViewModel
 

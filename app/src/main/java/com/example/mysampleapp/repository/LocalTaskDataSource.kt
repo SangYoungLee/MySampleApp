@@ -1,6 +1,6 @@
-package com.example.mysampleapp.base.repository
+package com.example.mysampleapp.repository
 
-import com.example.mysampleapp.base.repository.database.TasksDao
+import com.example.mysampleapp.repository.database.TasksDao
 import com.example.mysampleapp.entity.Task
 
 /**

@@ -1,6 +1,6 @@
 package com.example.mysampleapp.domain
 
-import com.example.mysampleapp.base.repository.ITaskRepository
+import com.example.mysampleapp.repository.ITaskRepository
 import com.example.mysampleapp.entity.Task
 
 /**

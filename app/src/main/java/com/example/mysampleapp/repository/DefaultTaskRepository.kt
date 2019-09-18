@@ -1,4 +1,4 @@
-package com.example.mysampleapp.base.repository
+package com.example.mysampleapp.repository
 
 import com.example.mysampleapp.entity.Task
 import kotlinx.coroutines.CoroutineDispatcher

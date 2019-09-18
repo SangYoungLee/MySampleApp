@@ -2,10 +2,10 @@ package com.example.mysampleapp.application.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.mysampleapp.base.repository.DefaultTaskRepository
-import com.example.mysampleapp.base.repository.ITaskRepository
-import com.example.mysampleapp.base.repository.LocalTaskDataSource
-import com.example.mysampleapp.base.repository.database.TasksDatabase
+import com.example.mysampleapp.repository.DefaultTaskRepository
+import com.example.mysampleapp.repository.ITaskRepository
+import com.example.mysampleapp.repository.LocalTaskDataSource
+import com.example.mysampleapp.repository.database.TasksDatabase
 
 /**
  * Created By lsy2014 on 2019-09-16
