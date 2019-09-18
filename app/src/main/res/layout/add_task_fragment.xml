@@ -27,7 +27,7 @@
                     android:id="@+id/et_title"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="@{viewModel.title}"
+                    android:text="@={viewModel.title}"
                     android:singleLine="true"
                     android:hint="Title"
                     android:gravity="center_vertical"
@@ -38,7 +38,7 @@
                     android:id="@+id/et_content"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@{viewModel.content}"
+                    android:text="@={viewModel.content}"
                     android:hint="Contents"
                     android:gravity="left|top"
                     android:background="@drawable/all_line_1dp_gray"
@@ -50,14 +50,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:visibility="@{viewModel.loading ? View.GONE : View.VISIBLE}"/>
+                    android:visibility="@{viewModel.loading ? View.VISIBLE : View.GONE, default=gone}"/>
         </RelativeLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{viewModel.saveTask()}"
+                android:onClick="@{()-> viewModel.saveTask()}"
                 app:layout_anchor="@id/container_contents"
                 app:layout_anchorGravity="bottom|right"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,5 +1,6 @@
 package com.example.mysampleapp.repository
 
+import com.example.mysampleapp.base.data.Result
 import com.example.mysampleapp.entity.Task
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -26,9 +27,14 @@ class DefaultTaskRepository(
         }
     }
 
-    override suspend fun saveTask(task: Task) {
-        withContext(ioDispatcher) {
-            localTaskDataSource.saveTask(task)
+    override suspend fun saveTask(task: Task): Result<Boolean> {
+        return withContext(ioDispatcher) {
+            try {
+                localTaskDataSource.saveTask(task)
+                Result.Success(true)
+            } catch (e: Exception) {
+                Result.Failure(e)
+            }
         }
     }
 }

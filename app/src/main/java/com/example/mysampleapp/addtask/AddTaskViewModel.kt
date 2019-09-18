@@ -19,11 +19,22 @@ class AddTaskViewModel(
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
 
+    private val _snackbarText = MutableLiveData<String>()
+    val snackbarText: LiveData<String> = _snackbarText
+
+    private val _taskUpdatedEvent = MutableLiveData<Any>()
+    val taskUpdatedEvent: LiveData<Any> = _taskUpdatedEvent
+
+    fun start() {
+        _loading.value = false
+    }
+
     fun saveTask() {
         val title = title.value
         val content = content.value
 
         if (title.isNullOrEmpty() || content.isNullOrEmpty()) {
+            _snackbarText.value = "타이틀 또는 컨텐츠가 비어있습니다"
             return
         }
 
@@ -32,9 +43,15 @@ class AddTaskViewModel(
         viewModelScope.launch {
             _loading.value = true
 
-            saveTaskUseCase.save(task)
+            val result = saveTaskUseCase.save(task)
 
             _loading.value = false
+
+            if (result.isSuccess()) {
+                _taskUpdatedEvent.value = Any()
+            } else {
+                _snackbarText.value = "저장에 실패했습니다."
+            }
         }
     }
 
