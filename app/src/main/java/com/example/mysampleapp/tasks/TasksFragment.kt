@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mysampleapp.R
@@ -39,12 +40,20 @@ class TasksFragment : BaseFragment() {
             navigateToAddTask()
         }
 
-        val tasksAdapter = TasksAdapter()
+        initMoveTask()
+
+        val tasksAdapter = TasksAdapter(viewModel)
         binding.rvTasks.adapter = tasksAdapter
 
         arguments?.let {
             if (args.changeState.isSuccess()) viewModel.refresh()
         } ?: viewModel.refresh()
+    }
+
+    private fun initMoveTask() {
+        viewModel.moveDetail.observe(viewLifecycleOwner, Observer {
+            // todo Move Detail
+        })
     }
 
     private fun navigateToAddTask() {
