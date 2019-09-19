@@ -3,8 +3,10 @@ package com.example.mysampleapp.detailtask
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.mysampleapp.base.data.ChangeState
 import com.example.mysampleapp.base.data.Result
 import com.example.mysampleapp.base.viewmodel.BaseViewModel
+import com.example.mysampleapp.domain.DeleteTaskUseCase
 import com.example.mysampleapp.domain.GetTaskUseCase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -13,7 +15,8 @@ import kotlinx.coroutines.launch
  * Created By lsy2014 on 2019-09-19
  */
 class DetailTaskViewModel(
-    private val getTaskUseCase: GetTaskUseCase
+    private val getTaskUseCase: GetTaskUseCase,
+    private val deleteTaskUseCase: DeleteTaskUseCase
 ) : BaseViewModel() {
 
     private val _title = MutableLiveData<String>()
@@ -28,8 +31,8 @@ class DetailTaskViewModel(
     private val _snackbarText = MutableLiveData<String>()
     val snackbarText: LiveData<String> = _snackbarText
 
-    private val _error = MutableLiveData<Boolean>()
-    val error: LiveData<Boolean> = _error
+    private val _moveBack = MutableLiveData<ChangeState>()
+    val moveBack: LiveData<ChangeState> = _moveBack
 
     fun start(taskId: String?) {
         if (taskId.isNullOrEmpty()) {
@@ -49,7 +52,7 @@ class DetailTaskViewModel(
 
                 delay(1000)
 
-                _error.value = true
+                _moveBack.value = ChangeState.FAIL
                 return@launch
             }
 
@@ -58,5 +61,25 @@ class DetailTaskViewModel(
             _title.value = task.title
             _content.value = task.contents
         }
+    }
+
+    fun deleteTask(taskId: String?) = viewModelScope.launch {
+        _loading.value = true
+
+        val result = deleteTaskUseCase.deleteTask(taskId ?: "")
+
+        _loading.value = false
+
+        if (result is Result.Failure) {
+            _snackbarText.value = "삭제에 실패했습니다."
+            result.exception.printStackTrace()
+            return@launch
+        }
+
+        _snackbarText.value = "현재 Task를 삭제했습니다."
+
+        delay(1000)
+
+        _moveBack.value = ChangeState.DELETE
     }
 }

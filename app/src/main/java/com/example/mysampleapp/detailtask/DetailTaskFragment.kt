@@ -1,13 +1,12 @@
 package com.example.mysampleapp.detailtask
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.mysampleapp.R
 import com.example.mysampleapp.base.BaseFragment
 import com.example.mysampleapp.base.data.ChangeState
 import com.example.mysampleapp.base.viewmodel.getViewModelFactory
@@ -30,6 +29,8 @@ class DetailTaskFragment : BaseFragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        setHasOptionsMenu(true)
+
         return binding.root
     }
 
@@ -37,9 +38,9 @@ class DetailTaskFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initSnackbar()
-        initError()
+        initMoveBack()
 
-        viewModel.start(arguments?.let { args.taskId } ?: "")
+        viewModel.start(args.taskId)
     }
 
     private fun initSnackbar() {
@@ -48,11 +49,25 @@ class DetailTaskFragment : BaseFragment() {
         })
     }
 
-    private fun initError() {
-        viewModel.error.observe(viewLifecycleOwner, Observer {
+    private fun initMoveBack() {
+        viewModel.moveBack.observe(viewLifecycleOwner, Observer {
             val action = DetailTaskFragmentDirections
-                .actionDetailTaskDestToTasksFragmentDest(ChangeState.FAIL)
+                .actionDetailTaskDestToTasksFragmentDest(it)
             findNavController().navigate(action)
         })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_delete -> {
+                viewModel.deleteTask(args.taskId)
+                return true
+            }
+        }
+        return false
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.detail_task_fragment_menu, menu)
     }
 }

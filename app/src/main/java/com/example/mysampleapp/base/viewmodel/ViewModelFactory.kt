@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mysampleapp.addtask.AddTaskViewModel
 import com.example.mysampleapp.application.TodoApplication
 import com.example.mysampleapp.detailtask.DetailTaskViewModel
+import com.example.mysampleapp.domain.DeleteTaskUseCase
 import com.example.mysampleapp.domain.GetTaskUseCase
 import com.example.mysampleapp.repository.ITaskRepository
 import com.example.mysampleapp.domain.GetTasksUseCase
@@ -30,7 +31,8 @@ class ViewModelFactory(private val taskRepository: ITaskRepository)
             )
 
             modelClass.isAssignableFrom(DetailTaskViewModel::class.java) -> DetailTaskViewModel(
-                GetTaskUseCase(taskRepository)
+                GetTaskUseCase(taskRepository),
+                DeleteTaskUseCase(taskRepository)
             )
 
             else -> throw IllegalStateException("Not matching ViewModel Class")

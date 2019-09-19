@@ -15,4 +15,6 @@ class LocalTaskDataSource(
     fun getTask(taskId: String): Task? = tasksDao.getTask(taskId)
 
     fun saveTask(task: Task) = tasksDao.insertTask(task)
+
+    fun deleteTask(taskId: String) = tasksDao.deleteByTaskId(taskId)
 }

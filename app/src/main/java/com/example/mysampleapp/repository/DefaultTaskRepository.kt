@@ -46,4 +46,16 @@ class DefaultTaskRepository(
             }
         }
     }
+
+    override suspend fun deleteTask(taskId: String): Result<Boolean> {
+        return withContext(ioDispatcher) {
+            try {
+                localTaskDataSource.deleteTask(taskId)
+                Result.Success(true)
+            } catch (e: Exception) {
+                Result.Failure(e)
+            }
+        }
+    }
+
 }

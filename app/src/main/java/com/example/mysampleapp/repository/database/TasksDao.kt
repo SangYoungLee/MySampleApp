@@ -1,9 +1,6 @@
 package com.example.mysampleapp.repository.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.mysampleapp.entity.Task
 
 /**
@@ -20,4 +17,7 @@ interface TasksDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertTask(task: Task)
+
+    @Query("DELETE FROM Tasks WHERE taskId = :taskId")
+    fun deleteByTaskId(taskId: String)
 }
