@@ -58,4 +58,13 @@ class DefaultTaskRepository(
         }
     }
 
+    override suspend fun updateComplete(taskId: String, isComplete: Boolean): Result<Boolean> = withContext(ioDispatcher) {
+        try {
+            localTaskDataSource.updateComplete(taskId, isComplete)
+            Result.Success(true)
+        } catch (e: Exception) {
+            Result.Failure(e)
+        }
+    }
+
 }

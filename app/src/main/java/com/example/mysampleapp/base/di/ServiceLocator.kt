@@ -2,6 +2,8 @@ package com.example.mysampleapp.base.di
 
 import android.content.Context
 import androidx.room.Room
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.mysampleapp.repository.DefaultTaskRepository
 import com.example.mysampleapp.repository.ITaskRepository
 import com.example.mysampleapp.repository.LocalTaskDataSource
@@ -32,9 +34,18 @@ object ServiceLocator {
 
     private fun createDatabase(context: Context): TasksDatabase {
         val database = Room.databaseBuilder(context.applicationContext,
-            TasksDatabase::class.java, "Tasks.db").build()
+            TasksDatabase::class.java,
+            "Tasks.db")
+            .addMigrations(MIGRATION_1_2)
+            .build()
         taskDatabase = database
 
         return database
+    }
+
+    private val MIGRATION_1_2 = object : Migration(1, 2) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("ALTER TABLE Tasks ADD isCompleted INTEGER NOT NULL DEFAULT 0")
+        }
     }
 }
