@@ -44,7 +44,7 @@
                 android:name="taskId"
                 app:argType="string"
                 app:nullable="true"
-                android:defaultValue='""' />
+                android:defaultValue="null" />
     </fragment>
 
     <fragment
@@ -58,6 +58,13 @@
         <action
                 android:id="@+id/action_detail_task_dest_to_tasks_fragment_dest"
                 app:destination="@id/tasks_fragment_dest"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+                android:id="@+id/action_detail_task_dest_to_add_task_fragment_dest"
+                app:destination="@id/add_task_fragment_dest"
                 app:enterAnim="@anim/nav_default_enter_anim"
                 app:exitAnim="@anim/nav_default_exit_anim"
                 app:popEnterAnim="@anim/nav_default_pop_enter_anim"

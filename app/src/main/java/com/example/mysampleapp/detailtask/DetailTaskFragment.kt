@@ -39,6 +39,7 @@ class DetailTaskFragment : BaseFragment() {
 
         initSnackbar()
         initMoveBack()
+        initEditBtn()
 
         viewModel.start(args.taskId)
     }
@@ -55,6 +56,14 @@ class DetailTaskFragment : BaseFragment() {
                 .actionDetailTaskDestToTasksFragmentDest(it)
             findNavController().navigate(action)
         })
+    }
+
+    private fun initEditBtn() {
+        binding.root.findViewById<View>(R.id.fab_edit)?.setOnClickListener {
+            val action = DetailTaskFragmentDirections
+                .actionDetailTaskDestToAddTaskFragmentDest(args.taskId)
+            findNavController().navigate(action)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

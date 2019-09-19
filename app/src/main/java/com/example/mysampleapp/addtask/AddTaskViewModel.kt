@@ -3,20 +3,23 @@ package com.example.mysampleapp.addtask
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.mysampleapp.base.data.Result
 import com.example.mysampleapp.base.viewmodel.BaseViewModel
+import com.example.mysampleapp.domain.GetTaskUseCase
 import com.example.mysampleapp.domain.SaveTaskUseCase
 import com.example.mysampleapp.entity.Task
 import kotlinx.coroutines.launch
 
 class AddTaskViewModel(
-    private val saveTaskUseCase: SaveTaskUseCase
+    private val saveTaskUseCase: SaveTaskUseCase,
+    private val getTaskUseCase: GetTaskUseCase
 ) : BaseViewModel() {
 
     // EditText Two-way DataBinding
     val title = MutableLiveData<String>()
     val content = MutableLiveData<String>()
 
-    private val _loading = MutableLiveData<Boolean>()
+    private val _loading = MutableLiveData<Boolean>().apply { value = false }
     val loading: LiveData<Boolean> = _loading
 
     private val _snackbarText = MutableLiveData<String>()
@@ -25,8 +28,35 @@ class AddTaskViewModel(
     private val _taskUpdatedEvent = MutableLiveData<Any>()
     val taskUpdatedEvent: LiveData<Any> = _taskUpdatedEvent
 
-    fun start() {
-        _loading.value = false
+    private var taskId: String? = ""
+    private var isNewTask: Boolean = false
+    private var taskCompleted: Boolean = false
+
+    fun start(taskId: String?) {
+        this.taskId = taskId
+
+        if (taskId.isNullOrEmpty()) {
+            isNewTask = true
+            return
+        }
+
+        viewModelScope.launch {
+            _loading.value = true
+
+            val result = getTaskUseCase.getTask(taskId)
+
+            _loading.value = false
+
+            if (result is Result.Failure) {
+                isNewTask = true
+                return@launch
+            }
+
+            val task = result.getValue()
+
+            title.value = task.title
+            content.value = task.contents
+        }
     }
 
     fun saveTask() {
@@ -38,7 +68,9 @@ class AddTaskViewModel(
             return
         }
 
-        val task = Task(title, content)
+        val task =
+            if (isNewTask) Task(title, content)
+            else Task(title, content, taskCompleted, taskId!!)
 
         viewModelScope.launch {
             _loading.value = true

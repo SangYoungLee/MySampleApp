@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.mysampleapp.base.BaseFragment
 import com.example.mysampleapp.base.data.ChangeState
 import com.example.mysampleapp.base.viewmodel.getViewModelFactory
@@ -17,6 +18,8 @@ class AddTaskFragment : BaseFragment() {
 
     private lateinit var binding: AddTaskFragmentBinding
     private val viewModel by viewModels<AddTaskViewModel> { getViewModelFactory() }
+
+    private val args by navArgs<AddTaskFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,7 +39,7 @@ class AddTaskFragment : BaseFragment() {
         initTaskUpdate()
         initSnackbar()
 
-        viewModel.start()
+        viewModel.start(args.taskId)
     }
 
     private fun initTaskUpdate() {
