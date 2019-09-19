@@ -10,7 +10,7 @@ interface ITaskRepository {
 
     suspend fun getTasks(): List<Task>
 
-    suspend fun getTask(taskId: String): Task?
+    suspend fun getTask(taskId: String): Result<Task>
 
     suspend fun saveTask(task: Task): Result<Boolean>
 }

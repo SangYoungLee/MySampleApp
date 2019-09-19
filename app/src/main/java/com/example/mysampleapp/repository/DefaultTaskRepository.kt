@@ -21,9 +21,18 @@ class DefaultTaskRepository(
         }
     }
 
-    override suspend fun getTask(taskId: String): Task? {
+    override suspend fun getTask(taskId: String): Result<Task> {
         return withContext(ioDispatcher) {
-            localTaskDataSource.getTask(taskId)
+            try {
+                val task: Task? = localTaskDataSource.getTask(taskId)
+                if (task != null) {
+                    Result.Success(task)
+                } else {
+                    Result.Failure(IllegalStateException("not found Task"))
+                }
+            } catch (e: Exception) {
+                Result.Failure(e)
+            }
         }
     }
 
