@@ -17,4 +17,6 @@ class LocalTaskDataSource(
     fun saveTask(task: Task) = tasksDao.insertTask(task)
 
     fun deleteTask(taskId: String) = tasksDao.deleteByTaskId(taskId)
+
+    fun updateComplete(taskId: String, isComplete: Boolean) = tasksDao.updateComplete(taskId, isComplete)
 }

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mysampleapp.R
@@ -13,6 +12,7 @@ import com.example.mysampleapp.base.BaseFragment
 import com.example.mysampleapp.base.event.EventObserver
 import com.example.mysampleapp.base.viewmodel.getViewModelFactory
 import com.example.mysampleapp.databinding.TasksFragmentBinding
+import com.example.mysampleapp.util.showSnackbar
 
 class TasksFragment : BaseFragment() {
 
@@ -42,13 +42,12 @@ class TasksFragment : BaseFragment() {
         }
 
         initMoveTask()
+        initSnackbar()
 
         val tasksAdapter = TasksAdapter(viewModel)
         binding.rvTasks.adapter = tasksAdapter
 
-        arguments?.let {
-            if (args.changeState.isSuccess()) viewModel.refresh()
-        } ?: viewModel.refresh()
+        viewModel.refresh()
     }
 
     private fun initMoveTask() {
@@ -56,6 +55,12 @@ class TasksFragment : BaseFragment() {
             val action = TasksFragmentDirections
                 .actionTasksFragmentDestToDetailTaskDest(it)
             findNavController().navigate(action)
+        })
+    }
+
+    private fun initSnackbar() {
+        viewModel.snackbarText.observe(viewLifecycleOwner, EventObserver {
+            binding.root.showSnackbar(it)
         })
     }
 
