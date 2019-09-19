@@ -25,7 +25,8 @@ class ViewModelFactory(private val taskRepository: ITaskRepository)
             )
 
             modelClass.isAssignableFrom(AddTaskViewModel::class.java) -> AddTaskViewModel(
-                SaveTaskUseCase(taskRepository)
+                SaveTaskUseCase(taskRepository),
+                GetTaskUseCase(taskRepository)
             )
 
             modelClass.isAssignableFrom(DetailTaskViewModel::class.java) -> DetailTaskViewModel(
