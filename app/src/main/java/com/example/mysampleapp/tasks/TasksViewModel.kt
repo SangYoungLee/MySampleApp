@@ -3,6 +3,7 @@ package com.example.mysampleapp.tasks
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.mysampleapp.base.event.Event
 import com.example.mysampleapp.base.viewmodel.BaseViewModel
 import com.example.mysampleapp.domain.GetTasksUseCase
 import com.example.mysampleapp.entity.Task
@@ -18,8 +19,8 @@ class TasksViewModel(
     private val _taskList = MutableLiveData<List<Task>>().apply { value = emptyList() }
     val taskList: LiveData<List<Task>> = _taskList
 
-    private val _moveDetail = MutableLiveData<String>()
-    val moveDetail: LiveData<String> = _moveDetail
+    private val _moveDetail = MutableLiveData<Event<String>>()
+    val moveDetail: LiveData<Event<String>> = _moveDetail
 
     fun refresh() {
         _dataLoading.value = true
@@ -33,6 +34,6 @@ class TasksViewModel(
     }
 
     fun openTask(taskId: String) {
-        _moveDetail.value = taskId
+        _moveDetail.value = Event(taskId)
     }
 }

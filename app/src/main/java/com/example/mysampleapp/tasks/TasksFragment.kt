@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mysampleapp.R
 import com.example.mysampleapp.base.BaseFragment
+import com.example.mysampleapp.base.event.EventObserver
 import com.example.mysampleapp.base.viewmodel.getViewModelFactory
 import com.example.mysampleapp.databinding.TasksFragmentBinding
 
@@ -51,8 +52,10 @@ class TasksFragment : BaseFragment() {
     }
 
     private fun initMoveTask() {
-        viewModel.moveDetail.observe(viewLifecycleOwner, Observer {
-            // todo Move Detail
+        viewModel.moveDetail.observe(viewLifecycleOwner, EventObserver {
+            val action = TasksFragmentDirections
+                .actionTasksFragmentDestToDetailTaskDest(it)
+            findNavController().navigate(action)
         })
     }
 

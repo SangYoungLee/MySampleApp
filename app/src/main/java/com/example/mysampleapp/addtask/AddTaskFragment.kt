@@ -11,7 +11,7 @@ import com.example.mysampleapp.base.BaseFragment
 import com.example.mysampleapp.base.data.ChangeState
 import com.example.mysampleapp.base.viewmodel.getViewModelFactory
 import com.example.mysampleapp.databinding.AddTaskFragmentBinding
-import com.google.android.material.snackbar.Snackbar
+import com.example.mysampleapp.util.showSnackbar
 
 class AddTaskFragment : BaseFragment() {
 
@@ -49,7 +49,7 @@ class AddTaskFragment : BaseFragment() {
 
     private fun initSnackbar() {
         viewModel.snackbarText.observe(viewLifecycleOwner, Observer<String> {
-            Snackbar.make(binding.root, it, Snackbar.LENGTH_SHORT).show()
+            binding.root.showSnackbar(it)
         })
     }
 }
