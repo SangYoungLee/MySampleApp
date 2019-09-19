@@ -2,6 +2,7 @@ package com.example.mysampleapp.tasks
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.example.mysampleapp.base.data.Result
 import com.example.mysampleapp.base.event.Event
@@ -27,6 +28,8 @@ class TasksViewModel(
 
     private val _snackbarText = MutableLiveData<Event<String>>()
     val snackbarText: LiveData<Event<String>> = _snackbarText
+
+    val isEmpty: LiveData<Boolean> = Transformations.map(taskList) { it.isEmpty() }
 
     fun refresh() {
         _dataLoading.value = true
