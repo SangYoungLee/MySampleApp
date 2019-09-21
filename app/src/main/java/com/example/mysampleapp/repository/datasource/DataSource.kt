@@ -1,12 +1,9 @@
-package com.example.mysampleapp.repository
+package com.example.mysampleapp.repository.datasource
 
 import com.example.mysampleapp.base.data.Result
 import com.example.mysampleapp.entity.Task
 
-/**
- * Created By lsy2014 on 2019-09-16
- */
-interface ITaskRepository {
+interface DataSource {
 
     suspend fun getTasks(): Result<List<Task>>
 

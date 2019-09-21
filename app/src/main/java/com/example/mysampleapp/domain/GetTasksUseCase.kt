@@ -1,7 +1,8 @@
 package com.example.mysampleapp.domain
 
-import com.example.mysampleapp.repository.ITaskRepository
+import com.example.mysampleapp.base.data.Result
 import com.example.mysampleapp.entity.Task
+import com.example.mysampleapp.repository.ITaskRepository
 import javax.inject.Inject
 
 /**
@@ -11,7 +12,7 @@ class GetTasksUseCase @Inject constructor(
     private val taskRepository: ITaskRepository
 ) {
 
-    suspend operator fun invoke(): List<Task> {
+    suspend fun getTasks(): Result<List<Task>> {
         return taskRepository.getTasks()
     }
 }
