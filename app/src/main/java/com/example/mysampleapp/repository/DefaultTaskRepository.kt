@@ -5,11 +5,12 @@ import com.example.mysampleapp.entity.Task
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 /**
  * Created By lsy2014 on 2019-09-16
  */
-class DefaultTaskRepository(
+class DefaultTaskRepository @Inject constructor(
     private val localTaskDataSource: LocalTaskDataSource
 ) : ITaskRepository {
 

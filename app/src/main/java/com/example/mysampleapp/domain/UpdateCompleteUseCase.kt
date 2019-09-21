@@ -2,8 +2,9 @@ package com.example.mysampleapp.domain
 
 import com.example.mysampleapp.base.data.Result
 import com.example.mysampleapp.repository.ITaskRepository
+import javax.inject.Inject
 
-class UpdateCompleteUseCase(
+class UpdateCompleteUseCase @Inject constructor(
     private val taskRepository: ITaskRepository
 ) {
 

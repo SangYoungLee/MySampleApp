@@ -9,8 +9,9 @@ import com.example.mysampleapp.domain.GetTaskUseCase
 import com.example.mysampleapp.domain.SaveTaskUseCase
 import com.example.mysampleapp.entity.Task
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AddTaskViewModel(
+class AddTaskViewModel @Inject constructor(
     private val saveTaskUseCase: SaveTaskUseCase,
     private val getTaskUseCase: GetTaskUseCase
 ) : BaseViewModel() {

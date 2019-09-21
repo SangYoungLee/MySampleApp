@@ -74,6 +74,11 @@ dependencies {
 
     "implementation"(Libraries.coroutine)
 
+    "implementation"(Libraries.dagger)
+    "kapt"(Libraries.daggerCompiler)
+    "implementation"(Libraries.daggerAndroidSupport)
+    "kapt"(Libraries.daggerAndroidProcessor)
+
     "testImplementation" (TestLibraries.junit4)
     "androidTestImplementation" (TestLibraries.testRunner)
     "androidTestImplementation" (TestLibraries.espresso)

@@ -4,18 +4,20 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mysampleapp.R
 import com.example.mysampleapp.base.BaseFragment
-import com.example.mysampleapp.base.data.ChangeState
-import com.example.mysampleapp.base.viewmodel.getViewModelFactory
 import com.example.mysampleapp.databinding.DetailTaskFragmentBinding
 import com.example.mysampleapp.util.showSnackbar
+import javax.inject.Inject
 
 class DetailTaskFragment : BaseFragment() {
 
-    private val viewModel by viewModels<DetailTaskViewModel> { getViewModelFactory() }
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel by viewModels<DetailTaskViewModel> { viewModelFactory }
     private lateinit var binding: DetailTaskFragmentBinding
 
     private val args by navArgs<DetailTaskFragmentArgs>()

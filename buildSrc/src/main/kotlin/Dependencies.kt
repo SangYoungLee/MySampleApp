@@ -27,6 +27,8 @@ object Versions {
     const val lifecycle = "2.1.0"
     const val room = "2.2.0-rc01"
     const val navigation = "2.1.0"
+
+    const val dagger = "2.24"
 }
 
 object Libraries {
@@ -49,6 +51,11 @@ object Libraries {
     const val navigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
 
     const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutineVersion}"
+
+    const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
+    const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+    const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
+    const val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
 }
 
 object TestLibraries {

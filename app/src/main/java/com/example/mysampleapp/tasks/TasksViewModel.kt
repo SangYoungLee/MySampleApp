@@ -11,8 +11,9 @@ import com.example.mysampleapp.domain.GetTasksUseCase
 import com.example.mysampleapp.domain.UpdateCompleteUseCase
 import com.example.mysampleapp.entity.Task
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TasksViewModel(
+class TasksViewModel @Inject constructor(
     private val getTasksUseCase: GetTasksUseCase,
     private val updateCompleteUseCase: UpdateCompleteUseCase
 ) : BaseViewModel() {

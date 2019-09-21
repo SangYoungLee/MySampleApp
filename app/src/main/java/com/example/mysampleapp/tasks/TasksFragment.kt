@@ -5,20 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mysampleapp.R
 import com.example.mysampleapp.base.BaseFragment
 import com.example.mysampleapp.base.event.EventObserver
-import com.example.mysampleapp.base.viewmodel.getViewModelFactory
 import com.example.mysampleapp.databinding.TasksFragmentBinding
 import com.example.mysampleapp.util.showSnackbar
+import javax.inject.Inject
 
 class TasksFragment : BaseFragment() {
 
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+
     private lateinit var binding: TasksFragmentBinding
 
-    private val viewModel by viewModels<TasksViewModel> { getViewModelFactory() }
+    private val viewModel by viewModels<TasksViewModel> { viewModelFactory }
 
     private val args by navArgs<TasksFragmentArgs>()
 
