@@ -9,7 +9,7 @@ import java.util.*
 data class Task(
     @ColumnInfo(name = "title") val title: String,
     @ColumnInfo(name = "contents") val contents: String,
-    @ColumnInfo(name = "isCompleted") val isCompleted: Boolean = false,
+    @ColumnInfo(name = "isCompleted") var isCompleted: Boolean = false,
     @PrimaryKey @ColumnInfo(name = "taskId") val id: String = UUID.randomUUID().toString()
 ) {
 

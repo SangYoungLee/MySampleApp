@@ -43,7 +43,8 @@
                     android:id="@+id/progressbar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="@{viewModel.loading ? View.VISIBLE : View.GONE, default=gone}"/>
+                    android:visibility="@{viewModel.loading ? View.VISIBLE : View.GONE, default=gone}"
+                    android:layout_centerInParent="true"/>
 
         </RelativeLayout>
 

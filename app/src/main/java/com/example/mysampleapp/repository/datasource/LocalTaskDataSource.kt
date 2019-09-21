@@ -51,6 +51,10 @@ class LocalTaskDataSource(
         }
     }
 
+    override suspend fun deleteAllTasks() = withContext(ioDispatcher) {
+        tasksDao.deleteAllTasks()
+    }
+
     override suspend fun updateComplete(taskId: String, isComplete: Boolean): Result<Boolean> = withContext(ioDispatcher) {
         try {
             tasksDao.updateComplete(taskId, isComplete)

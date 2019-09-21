@@ -46,7 +46,7 @@ class AppModule {
     @Singleton
     @Provides
     @RemoteDataSource
-    fun provideRemoteTaskDataSource(): DataSource = RemoteTaskDataSource()
+    fun provideRemoteTaskDataSource(): DataSource = RemoteTaskDataSource
 }
 
 @Module
