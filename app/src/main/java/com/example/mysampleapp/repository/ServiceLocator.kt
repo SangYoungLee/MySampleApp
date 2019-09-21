@@ -1,12 +1,10 @@
-package com.example.mysampleapp.base.di
+package com.example.mysampleapp.repository
 
 import android.content.Context
 import androidx.room.Room
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.mysampleapp.repository.DefaultTaskRepository
-import com.example.mysampleapp.repository.ITaskRepository
-import com.example.mysampleapp.repository.LocalTaskDataSource
+import com.example.mysampleapp.application.Migrations.MIGRATION_1_2
 import com.example.mysampleapp.repository.database.TasksDatabase
 
 /**
@@ -18,17 +16,23 @@ object ServiceLocator {
     private var taskDatabase: TasksDatabase? = null
 
     fun provideTaskRepository(context: Context): ITaskRepository {
-        return taskRepository ?: createTaskRepository(context)
+        return taskRepository
+            ?: createTaskRepository(context)
     }
 
     private fun createTaskRepository(context: Context): ITaskRepository {
-        return DefaultTaskRepository(createLocalDataSource(context)).also {
+        return DefaultTaskRepository(
+            createLocalDataSource(
+                context
+            )
+        ).also {
             taskRepository = it
         }
     }
 
     private fun createLocalDataSource(context: Context): LocalTaskDataSource {
-        val database = taskDatabase ?: createDatabase(context)
+        val database = taskDatabase
+            ?: createDatabase(context)
         return LocalTaskDataSource(database.tasksDao())
     }
 
@@ -41,11 +45,5 @@ object ServiceLocator {
         taskDatabase = database
 
         return database
-    }
-
-    private val MIGRATION_1_2 = object : Migration(1, 2) {
-        override fun migrate(database: SupportSQLiteDatabase) {
-            database.execSQL("ALTER TABLE Tasks ADD isCompleted INTEGER NOT NULL DEFAULT 0")
-        }
     }
 }
