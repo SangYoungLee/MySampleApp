@@ -1,71 +1,73 @@
 package com.example.mysampleapp.repository
 
+import android.util.Log
+import com.example.mysampleapp.application.AppModule
 import com.example.mysampleapp.base.data.Result
 import com.example.mysampleapp.entity.Task
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import com.example.mysampleapp.repository.datasource.DataSource
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
  * Created By lsy2014 on 2019-09-16
  */
 class DefaultTaskRepository @Inject constructor(
-    private val localTaskDataSource: LocalTaskDataSource
+    @AppModule.LocalDataSource private val localTaskDataSource: DataSource,
+    @AppModule.RemoteDataSource private val remoteTaskDataSource: DataSource
 ) : ITaskRepository {
 
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val tag = DefaultTaskRepository::class.java.simpleName
 
-    override suspend fun getTasks(): List<Task> {
-        return withContext(ioDispatcher) {
-            localTaskDataSource.getTasks()
+    override suspend fun getTasks(): Result<List<Task>> {
+        when (val remoteTasks = remoteTaskDataSource.getTasks()) {
+            is Result.Failure -> Log.w(tag, "Get Remote Tasks Failed")
+            is Result.Success -> {
+                localTaskDataSource.deleteAllTasks()
+                remoteTasks.data.forEach {
+                    localTaskDataSource.saveTask(it)
+                }
+                return remoteTasks
+            }
         }
+
+        return localTaskDataSource.getTasks()
     }
 
     override suspend fun getTask(taskId: String): Result<Task> {
-        return withContext(ioDispatcher) {
-            try {
-                val task: Task? = localTaskDataSource.getTask(taskId)
-                if (task != null) {
-                    Result.Success(task)
-                } else {
-                    Result.Failure(IllegalStateException("not found Task"))
-                }
-            } catch (e: Exception) {
-                Result.Failure(e)
-            }
+        when (val remoteTask = remoteTaskDataSource.getTask(taskId)) {
+            is Result.Failure -> Log.w(tag, "Get Remote Task Failed")
+            is Result.Success -> return remoteTask
         }
+
+        return localTaskDataSource.getTask(taskId)
     }
 
     override suspend fun saveTask(task: Task): Result<Boolean> {
-        return withContext(ioDispatcher) {
-            try {
-                localTaskDataSource.saveTask(task)
-                Result.Success(true)
-            } catch (e: Exception) {
-                Result.Failure(e)
-            }
+        coroutineScope {
+            launch { remoteTaskDataSource.saveTask(task) }
+            launch { localTaskDataSource.saveTask(task) }
         }
+
+        return Result.Success(true)
     }
 
     override suspend fun deleteTask(taskId: String): Result<Boolean> {
-        return withContext(ioDispatcher) {
-            try {
-                localTaskDataSource.deleteTask(taskId)
-                Result.Success(true)
-            } catch (e: Exception) {
-                Result.Failure(e)
-            }
+        coroutineScope {
+            launch { remoteTaskDataSource.deleteTask(taskId) }
+            launch { localTaskDataSource.deleteTask(taskId) }
         }
+
+        return Result.Success(true)
     }
 
-    override suspend fun updateComplete(taskId: String, isComplete: Boolean): Result<Boolean> = withContext(ioDispatcher) {
-        try {
-            localTaskDataSource.updateComplete(taskId, isComplete)
-            Result.Success(true)
-        } catch (e: Exception) {
-            Result.Failure(e)
+    override suspend fun updateComplete(taskId: String, isComplete: Boolean): Result<Boolean> {
+        coroutineScope {
+            launch { remoteTaskDataSource.updateComplete(taskId, isComplete) }
+            launch { localTaskDataSource.updateComplete(taskId, isComplete) }
         }
+
+        return Result.Success(true)
     }
 
 }

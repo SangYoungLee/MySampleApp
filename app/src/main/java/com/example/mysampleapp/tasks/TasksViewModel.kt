@@ -21,7 +21,7 @@ class TasksViewModel @Inject constructor(
     private val _dataLoading = MutableLiveData<Boolean>()
     val dataLoading: LiveData<Boolean> = _dataLoading
 
-    private val _taskList = MutableLiveData<List<Task>>().apply { value = emptyList() }
+    private val _taskList = MutableLiveData<List<Task>>()
     val taskList: LiveData<List<Task>> = _taskList
 
     private val _moveDetail = MutableLiveData<Event<String>>()
@@ -30,14 +30,20 @@ class TasksViewModel @Inject constructor(
     private val _snackbarText = MutableLiveData<Event<String>>()
     val snackbarText: LiveData<Event<String>> = _snackbarText
 
-    val isEmpty: LiveData<Boolean> = Transformations.map(taskList) { it.isEmpty() }
+    val isEmpty: LiveData<Boolean> = Transformations.map(taskList) { it?.isEmpty() == true }
 
     fun refresh() {
         _dataLoading.value = true
 
         viewModelScope.launch {
-            val taskDataList = getTasksUseCase()
-            _taskList.value = taskDataList
+            val tasksResult = getTasksUseCase.getTasks()
+            if (tasksResult is Result.Failure) {
+                _snackbarText.value = Event("Tasks 정보를 불러오지 못했습니다.")
+                _taskList.value = emptyList()
+                return@launch
+            }
+
+            _taskList.value = tasksResult.getValue()
 
             _dataLoading.value = false
         }

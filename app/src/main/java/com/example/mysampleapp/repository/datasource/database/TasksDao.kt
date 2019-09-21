@@ -1,4 +1,4 @@
-package com.example.mysampleapp.repository.database
+package com.example.mysampleapp.repository.datasource.database
 
 import androidx.room.*
 import com.example.mysampleapp.entity.Task
@@ -13,13 +13,16 @@ interface TasksDao {
     fun getTasks(): List<Task>
 
     @Query("SELECT * FROM Tasks WHERE taskId = :taskId")
-    fun getTask(taskId: String): Task?
+    fun getTask(taskId: String): Task
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertTask(task: Task)
 
     @Query("DELETE FROM Tasks WHERE taskId = :taskId")
     fun deleteByTaskId(taskId: String)
+
+    @Query("DELETE FROM Tasks")
+    fun deleteAllTasks()
 
     @Query("UPDATE tasks SET isCompleted = :isCompleted WHERE taskId = :taskId")
     fun updateComplete(taskId: String, isCompleted: Boolean)
