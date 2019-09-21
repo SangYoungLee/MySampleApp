@@ -1,15 +1,16 @@
-package com.example.mysampleapp
+package com.example.mysampleapp.activity
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.mysampleapp.R
 import com.google.android.material.navigation.NavigationView
+import dagger.android.support.DaggerAppCompatActivity
 
-class TasksActivity : AppCompatActivity() {
+class TasksActivity : DaggerAppCompatActivity() {
 
     private lateinit var appbarConfiguration: AppBarConfiguration
 

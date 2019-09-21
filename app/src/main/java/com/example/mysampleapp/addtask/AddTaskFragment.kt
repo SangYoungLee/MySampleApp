@@ -6,18 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mysampleapp.base.BaseFragment
 import com.example.mysampleapp.base.data.ChangeState
-import com.example.mysampleapp.base.viewmodel.getViewModelFactory
 import com.example.mysampleapp.databinding.AddTaskFragmentBinding
 import com.example.mysampleapp.util.showSnackbar
+import javax.inject.Inject
 
 class AddTaskFragment : BaseFragment() {
 
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+
     private lateinit var binding: AddTaskFragmentBinding
-    private val viewModel by viewModels<AddTaskViewModel> { getViewModelFactory() }
+    private val viewModel by viewModels<AddTaskViewModel> { viewModelFactory }
 
     private val args by navArgs<AddTaskFragmentArgs>()
 

@@ -10,11 +10,12 @@ import com.example.mysampleapp.domain.DeleteTaskUseCase
 import com.example.mysampleapp.domain.GetTaskUseCase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * Created By lsy2014 on 2019-09-19
  */
-class DetailTaskViewModel(
+class DetailTaskViewModel @Inject constructor(
     private val getTaskUseCase: GetTaskUseCase,
     private val deleteTaskUseCase: DeleteTaskUseCase
 ) : BaseViewModel() {

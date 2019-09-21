@@ -1,8 +1,7 @@
 package com.example.mysampleapp.application
 
-import android.app.Application
-import com.example.mysampleapp.repository.ServiceLocator
 import com.example.mysampleapp.repository.ITaskRepository
+import com.example.mysampleapp.repository.ServiceLocator
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 
