@@ -36,7 +36,7 @@ class AppModule {
 abstract class AppModuleBinds {
     @Singleton
     @Binds
-    abstract fun provideRepository(defaultTaskRepository: DefaultTaskRepository): ITaskRepository
+    abstract fun bindRepository(defaultTaskRepository: DefaultTaskRepository): ITaskRepository
 }
 
 object Migrations {
