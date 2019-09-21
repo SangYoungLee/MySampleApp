@@ -3,8 +3,6 @@ import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 
 plugins {
     id(BuildPlugins.androidApplication)
-//    id("org.jetbrains.kotlin.android")
-//    id("org.jetbrains.kotlin.android.extensions")
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
@@ -21,7 +19,18 @@ configure<BaseAppModuleExtension> {
         versionCode = Versions.versionCode
         versionName = Versions.versionName
 
-        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.mysampleapp.CustomTestRunner"
+    }
+
+    sourceSets {
+        val sharedDir = File("src/sharedTest/java")
+        getByName("test") {
+            java.srcDirs(sharedDir)
+        }
+
+        getByName("androidTest") {
+            java.srcDirs(sharedDir)
+        }
     }
 
     buildTypes {
@@ -80,6 +89,7 @@ dependencies {
     "kapt"(Libraries.daggerAndroidProcessor)
 
     "testImplementation" (TestLibraries.junit4)
+    "testImplementation" (TestLibraries.testRunner)
     "androidTestImplementation" (TestLibraries.testRunner)
     "androidTestImplementation" (TestLibraries.espresso)
 }
