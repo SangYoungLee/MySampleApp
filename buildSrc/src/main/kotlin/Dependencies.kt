@@ -63,12 +63,17 @@ object TestLibraries {
         const val junit4 = "4.12"
         const val androidXTest = "1.2.0"
         const val androidXTestExtKotlin = "1.1.1"
+
+        const val fragmentTest = "1.1.0"
+
         const val espresso = "3.2.0"
     }
     const val junit4     = "junit:junit:${Versions.junit4}"
     const val testCoreKtx   = "androidx.test:core-ktx:${Versions.androidXTest}"
     const val testRunner = "androidx.test:runner:${Versions.androidXTest}"
     const val testExtKotlin = "androidx.test.ext:junit-ktx:${Versions.androidXTestExtKotlin}"
+
+    const val fragmentTest = "androidx.fragment:fragment-testing:${Versions.fragmentTest}"
 
     const val espresso   = "androidx.test.espresso:espresso-core:${Versions.espresso}"
 

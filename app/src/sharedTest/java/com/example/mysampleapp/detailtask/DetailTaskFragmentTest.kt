@@ -1,5 +1,6 @@
 package com.example.mysampleapp.detailtask
 
+import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.example.mysampleapp.R
@@ -34,5 +35,9 @@ class DetailTaskFragmentTest : BaseFragmentTest() {
         // WHEN - Details fragment launched to display task
         val bundle = DetailTaskFragmentArgs(activeTask.id).toBundle()
         launchFragmentInContainer<DetailTaskFragment>(bundle, R.style.AppTheme)
+
+        // THEN - Task details are displayed on the screen
+        // make sure that the title/description are both shown and correct
+
     }
 }
