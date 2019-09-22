@@ -61,6 +61,13 @@ class DefaultTaskRepository @Inject constructor(
         return Result.Success(true)
     }
 
+    override suspend fun deleteAllTasks() {
+        coroutineScope {
+            launch { remoteTaskDataSource.deleteAllTasks() }
+            launch { localTaskDataSource.deleteAllTasks() }
+        }
+    }
+
     override suspend fun updateComplete(taskId: String, isComplete: Boolean): Result<Boolean> {
         coroutineScope {
             launch { remoteTaskDataSource.updateComplete(taskId, isComplete) }
