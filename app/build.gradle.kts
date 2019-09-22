@@ -88,13 +88,19 @@ dependencies {
     "implementation"(Libraries.daggerAndroidSupport)
     "kapt"(Libraries.daggerAndroidProcessor)
 
+    "implementation" (TestLibraries.testCore)
+    "implementation"(Libraries.fragment)
+    "implementation"(Libraries.fragmentKtx)
     "implementation"(TestLibraries.fragmentTest)
+    "androidTestImplementation" (Libraries.appCompat)
 
     "testImplementation" (TestLibraries.junit4)
     "testImplementation" (TestLibraries.testCoreKtx)
     "testImplementation" (TestLibraries.testRunner)
     "testImplementation" (TestLibraries.testExtKotlin)
+    "testImplementation" (TestLibraries.espresso)
 
+    "androidTestImplementation" (TestLibraries.junit4)
     "androidTestImplementation" (TestLibraries.testCoreKtx)
     "androidTestImplementation" (TestLibraries.testRunner)
     "androidTestImplementation" (TestLibraries.testExtKotlin)

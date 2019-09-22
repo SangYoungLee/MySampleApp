@@ -24,6 +24,8 @@ object Versions {
     const val ktx = "1.1.0"
     const val coroutineVersion = "1.3.1"
 
+    const val fragment = "1.1.0"
+
     const val lifecycle = "2.1.0"
     const val room = "2.2.0-rc01"
     const val navigation = "2.1.0"
@@ -36,6 +38,9 @@ object Libraries {
     const val appCompat        = "androidx.appcompat:appcompat:${Versions.jetpack}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val ktxCore          = "androidx.core:core-ktx:${Versions.ktx}"
+
+    const val fragment = "androidx.fragment:fragment:${Versions.fragment}"
+    const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragment}"
 
     const val dataBindingCompiler = "com.android.databinding:compiler:${Versions.gradleVersion}"
 
@@ -69,6 +74,7 @@ object TestLibraries {
         const val espresso = "3.2.0"
     }
     const val junit4     = "junit:junit:${Versions.junit4}"
+    const val testCore = "androidx.test:core:${Versions.androidXTest}"
     const val testCoreKtx   = "androidx.test:core-ktx:${Versions.androidXTest}"
     const val testRunner = "androidx.test:runner:${Versions.androidXTest}"
     const val testExtKotlin = "androidx.test.ext:junit-ktx:${Versions.androidXTestExtKotlin}"
