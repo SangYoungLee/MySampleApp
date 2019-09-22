@@ -89,7 +89,15 @@ dependencies {
     "kapt"(Libraries.daggerAndroidProcessor)
 
     "testImplementation" (TestLibraries.junit4)
+    "testImplementation" (TestLibraries.testCoreKtx)
     "testImplementation" (TestLibraries.testRunner)
+    "testImplementation" (TestLibraries.testExtKotlin)
+
+    "androidTestImplementation" (TestLibraries.testCoreKtx)
     "androidTestImplementation" (TestLibraries.testRunner)
+    "androidTestImplementation" (TestLibraries.testExtKotlin)
     "androidTestImplementation" (TestLibraries.espresso)
+
+    "kaptAndroidTest" (TestLibraries.daggerCompiler)
+    "kaptTest" (TestLibraries.daggerCompiler)
 }
