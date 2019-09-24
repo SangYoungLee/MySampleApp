@@ -1,6 +1,7 @@
 package com.example.mysampleapp
 
 import android.content.Context
+import com.example.mysampleapp.activity.ActivityModuleBinds
 import com.example.mysampleapp.activity.FragmentModuleBinds
 import com.example.mysampleapp.application.AppModule
 import com.example.mysampleapp.application.AppModuleBinds
@@ -18,7 +19,7 @@ import javax.inject.Singleton
  */
 @Singleton
 @Component(modules = [AndroidSupportInjectionModule::class, AppModule::class,
-    AppModuleBinds::class, FragmentModuleBinds::class, ViewModelModuleBinds::class])
+    AppModuleBinds::class, ActivityModuleBinds::class, FragmentModuleBinds::class, ViewModelModuleBinds::class])
 interface TestAppComponent : AndroidInjector<TodoApplication> {
 
     @Component.Factory
