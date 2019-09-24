@@ -58,4 +58,18 @@ class TasksViewModelTest {
 
         assert(tasksViewModel.taskList.value?.size == 3)
     }
+
+    @Test
+    fun loadTaskAll_returnError() {
+        tasksRepository.shouldReturnError = true
+
+        tasksViewModel.refresh()
+
+        assert(tasksViewModel.dataLoading.value == false)
+
+        assert(tasksViewModel.taskList.value.isNullOrEmpty())
+
+        val snackBarMessage = "Tasks 정보를 불러오지 못했습니다."
+        assert(tasksViewModel.snackbarText.value?.content == snackBarMessage)
+    }
 }

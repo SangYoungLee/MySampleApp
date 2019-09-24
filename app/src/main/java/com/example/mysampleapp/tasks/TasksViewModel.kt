@@ -37,6 +37,9 @@ class TasksViewModel @Inject constructor(
 
         viewModelScope.launch {
             val tasksResult = getTasksUseCase.getTasks()
+
+            _dataLoading.value = false
+
             if (tasksResult is Result.Failure) {
                 _snackbarText.value = Event("Tasks 정보를 불러오지 못했습니다.")
                 _taskList.value = emptyList()
@@ -44,8 +47,6 @@ class TasksViewModel @Inject constructor(
             }
 
             _taskList.value = tasksResult.getValue()
-
-            _dataLoading.value = false
         }
     }
 
