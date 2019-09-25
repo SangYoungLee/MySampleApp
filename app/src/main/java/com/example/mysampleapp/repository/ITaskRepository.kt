@@ -16,5 +16,7 @@ interface ITaskRepository {
 
     suspend fun deleteTask(taskId: String): Result<Boolean>
 
+    suspend fun deleteAllTasks()
+
     suspend fun updateComplete(taskId: String, isComplete: Boolean): Result<Boolean>
 }

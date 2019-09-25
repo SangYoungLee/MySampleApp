@@ -20,7 +20,7 @@
                 tools:context=".detailtask.DetailTaskFragment">
 
             <TextView
-                    android:id="@+id/tv_title"
+                    android:id="@+id/tv_detail_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
@@ -30,13 +30,13 @@
                     android:background="@drawable/all_line_1dp_gray"/>
 
             <TextView
-                    android:id="@+id/tv_content"
+                    android:id="@+id/tv_detail_content"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="14dp"
                     android:text="@{viewModel.content}"
                     tools:text="Contents"
-                    android:layout_below="@id/tv_title"
+                    android:layout_below="@id/tv_detail_title"
                     android:background="@drawable/all_line_1dp_gray"/>
 
             <ProgressBar

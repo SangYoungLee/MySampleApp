@@ -24,6 +24,8 @@ object Versions {
     const val ktx = "1.1.0"
     const val coroutineVersion = "1.3.1"
 
+    const val fragment = "1.1.0"
+
     const val lifecycle = "2.1.0"
     const val room = "2.2.0-rc01"
     const val navigation = "2.1.0"
@@ -36,6 +38,9 @@ object Libraries {
     const val appCompat        = "androidx.appcompat:appcompat:${Versions.jetpack}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val ktxCore          = "androidx.core:core-ktx:${Versions.ktx}"
+
+    const val fragment = "androidx.fragment:fragment:${Versions.fragment}"
+    const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragment}"
 
     const val dataBindingCompiler = "com.android.databinding:compiler:${Versions.gradleVersion}"
 
@@ -59,12 +64,33 @@ object Libraries {
 }
 
 object TestLibraries {
-    private object Versions {
+    private object TestVersions {
         const val junit4 = "4.12"
-        const val testRunner = "1.2.0"
+        const val androidXTest = "1.2.0"
+        const val androidXTestExtKotlin = "1.1.1"
+
+        const val fragmentTest = Versions.fragment
+
         const val espresso = "3.2.0"
+
+        const val coroutine = Versions.coroutineVersion
+
+        const val testArch = "2.0.0"
     }
-    const val junit4     = "junit:junit:${Versions.junit4}"
-    const val testRunner = "androidx.test:runner:${Versions.testRunner}"
-    const val espresso   = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    const val junit4     = "junit:junit:${TestVersions.junit4}"
+    const val testCore = "androidx.test:core:${TestVersions.androidXTest}"
+    const val testCoreKtx   = "androidx.test:core-ktx:${TestVersions.androidXTest}"
+    const val testRunner = "androidx.test:runner:${TestVersions.androidXTest}"
+    const val testExtKotlin = "androidx.test.ext:junit-ktx:${TestVersions.androidXTestExtKotlin}"
+    const val testArch = "androidx.arch.core:core-testing:${TestVersions.testArch}"
+
+    const val fragmentTest = "androidx.fragment:fragment-testing:${TestVersions.fragmentTest}"
+
+    const val espresso   = "androidx.test.espresso:espresso-core:${TestVersions.espresso}"
+
+    const val daggerCompiler = Libraries.daggerCompiler
+
+    const val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${TestVersions.coroutine}"
+    const val coroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${TestVersions.coroutine}"
+    const val coroutineKotlinTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${TestVersions.coroutine}"
 }
