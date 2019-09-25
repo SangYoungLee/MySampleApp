@@ -2,12 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:dist="http://schemas.android.com/apk/distribution"
         xmlns:tools="http://schemas.android.com/tools"
-        package="com.example.todoapp">
+        package="com.syapp.todo">
 
     <dist:module dist:instant="true"/>
 
     <application
-            android:name="com.example.todoapp.application.TodoApplication"
+            android:name="com.syapp.todo.application.TodoApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -15,7 +15,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.example.todoapp.activity.TasksActivity">
+        <activity android:name="com.syapp.todo.activity.TasksActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

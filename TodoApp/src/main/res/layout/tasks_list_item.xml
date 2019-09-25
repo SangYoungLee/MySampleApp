@@ -7,10 +7,10 @@
 
         <variable
                 name="task"
-                type="com.example.todoapp.entity.Task" />
+                type="com.syapp.todo.entity.Task" />
         <variable
                 name="viewModel"
-                type="com.example.todoapp.tasks.TasksViewModel" />
+                type="com.syapp.todo.tasks.TasksViewModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
