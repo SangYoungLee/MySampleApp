@@ -13,13 +13,13 @@ configure<BaseAppModuleExtension> {
     setCompileSdkVersion(Versions.compileSdkVersion)
 
     defaultConfig {
-        applicationId = "com.example.mysampleapp"
+        applicationId = "com.syapp.todo"
         minSdkVersion(Versions.minSdkVersion)
         targetSdkVersion(Versions.targetSdkVersion)
         versionCode = Versions.versionCode
         versionName = Versions.versionName
 
-        testInstrumentationRunner = "com.example.mysampleapp.CustomTestRunner"
+        testInstrumentationRunner = "com.syapp.todo.CustomTestRunner"
     }
 
     sourceSets {

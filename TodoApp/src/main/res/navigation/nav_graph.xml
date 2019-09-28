@@ -10,7 +10,7 @@
             android:label="Task List" >
         <argument
                 android:name="changeState"
-                app:argType="com.example.mysampleapp.base.data.ChangeState"
+                app:argType="com.syapp.todo.base.data.ChangeState"
                 android:defaultValue="INIT" />
 
         <action
