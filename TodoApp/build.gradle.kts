@@ -88,6 +88,8 @@ dependencies {
     "implementation"(Libraries.daggerAndroidSupport)
     "kapt"(Libraries.daggerAndroidProcessor)
 
+    "implementation"(Libraries.timber)
+
     /*************** Test Libraries *****************/
 
     "implementation"(Libraries.fragment)
