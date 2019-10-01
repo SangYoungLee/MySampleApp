@@ -75,4 +75,7 @@ dependencies {
     "implementation"(Libraries.lifecycle)
     "kapt"(Libraries.lifecycleCompiler)
     "implementation"(Libraries.viewModel)
+
+    "implementation"(Libraries.cameraXCore)
+    "implementation"(Libraries.cameraXCamera2)
 }

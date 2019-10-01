@@ -31,6 +31,8 @@ object Versions {
     const val navigation = "2.1.0"
 
     const val dagger = "2.24"
+
+    const val cameraX = "1.0.0-alpha05"
 }
 
 object Libraries {
@@ -63,6 +65,9 @@ object Libraries {
     const val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
 
     const val timber = "com.jakewharton.timber:timber:4.7.1"
+
+    const val cameraXCore = "androidx.camera:camera-core:${Versions.cameraX}"
+    const val cameraXCamera2 = "androidx.camera:camera-camera2:${Versions.cameraX}"
 }
 
 object TestLibraries {
