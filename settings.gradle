@@ -1,1 +1,1 @@
-include ':TodoApp'
+include ':TodoApp', ':SyCamera'
