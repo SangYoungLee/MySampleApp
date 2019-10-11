@@ -6,11 +6,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.syapp.todo.R
 import com.google.android.material.navigation.NavigationView
-import dagger.android.support.DaggerAppCompatActivity
+import com.syapp.todo.R
+import com.syapp.todo.base.BaseActivity
 
-class TasksActivity : DaggerAppCompatActivity() {
+class TasksActivity : BaseActivity() {
 
     private lateinit var appbarConfiguration: AppBarConfiguration
 
