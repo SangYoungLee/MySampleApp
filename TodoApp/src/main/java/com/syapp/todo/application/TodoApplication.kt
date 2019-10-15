@@ -1,6 +1,6 @@
 package com.syapp.todo.application
 
-import com.example.mysampleapp.BuildConfig
+import com.syapp.todo.BuildConfig
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 import timber.log.Timber
