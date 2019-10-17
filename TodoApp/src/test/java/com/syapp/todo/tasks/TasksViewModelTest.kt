@@ -1,27 +1,33 @@
 package com.syapp.todo.tasks
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.syapp.todo.FakeRepository
 import com.syapp.todo.MainCoroutineRule
+import com.syapp.todo.base.data.Result
 import com.syapp.todo.domain.GetTasksUseCase
 import com.syapp.todo.domain.UpdateCompleteUseCase
 import com.syapp.todo.entity.Task
+import com.syapp.todo.repository.ITaskRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import org.mockito.Mockito.*
+import java.lang.Exception
 
 @ExperimentalCoroutinesApi
 @RunWith(JUnit4::class)
 class TasksViewModelTest {
 
     private lateinit var tasksViewModel: TasksViewModel
-    private lateinit var tasksRepository: FakeRepository
+    private lateinit var tasksRepository: ITaskRepository
 
     private lateinit var getTasksUseCase: GetTasksUseCase
     private lateinit var updateCompleteUseCase: UpdateCompleteUseCase
+
+    private lateinit var tasks: List<Task>
 
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
@@ -32,11 +38,10 @@ class TasksViewModelTest {
 
     @Before
     fun setUp() {
-        tasksRepository = FakeRepository()
-        val task1 = Task("Title1", "Description1")
-        val task2 = Task("Title2", "Description2", true)
-        val task3 = Task("Title3", "Description3", true)
-        tasksRepository.addTasks(task1, task2, task3)
+        tasksRepository = mock(ITaskRepository::class.java)
+        tasks = arrayListOf(Task("Title1", "Description1"),
+            Task("Title2", "Description2", true),
+            Task("Title3", "Description3", true))
 
         getTasksUseCase = GetTasksUseCase(tasksRepository)
         updateCompleteUseCase = UpdateCompleteUseCase(tasksRepository)
@@ -46,14 +51,27 @@ class TasksViewModelTest {
 
     @Test
     fun loadTaskAllFromRepository_loadingTogglesAndDataLoaded() {
+        // given
+        reset(tasksRepository)
+
+        runBlocking {
+            `when`(tasksRepository.getTasks())
+                .thenReturn(Result.Success(tasks))
+        }
+
+        // when
         mainCoroutineRule.pauseDispatcher()
 
         tasksViewModel.refresh()
 
+        // then
         assert(tasksViewModel.dataLoading.value == true)
 
+
+        // when
         mainCoroutineRule.resumeDispatcher()
 
+        // then
         assert(tasksViewModel.dataLoading.value == false)
 
         assert(tasksViewModel.taskList.value?.size == 3)
@@ -61,10 +79,18 @@ class TasksViewModelTest {
 
     @Test
     fun loadTaskAll_returnError() {
-        tasksRepository.shouldReturnError = true
+        // given
+        reset(tasksRepository)
 
+        runBlocking {
+            `when`(tasksRepository.getTasks())
+                .thenReturn(Result.Failure(Exception("get Task Fail")))
+        }
+
+        // when
         tasksViewModel.refresh()
 
+        // then
         assert(tasksViewModel.dataLoading.value == false)
 
         assert(tasksViewModel.taskList.value.isNullOrEmpty())
