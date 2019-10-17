@@ -122,4 +122,7 @@ dependencies {
 
     "kaptAndroidTest" (TestLibraries.daggerCompiler)
     "kaptTest" (TestLibraries.daggerCompiler)
+
+    "testImplementation" (TestLibraries.mockito)
+    "androidTestImplementation" (TestLibraries.mockito)
 }

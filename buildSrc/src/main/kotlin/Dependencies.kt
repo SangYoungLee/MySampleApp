@@ -83,6 +83,8 @@ object TestLibraries {
         const val coroutine = Versions.coroutineVersion
 
         const val testArch = "2.0.0"
+
+        const val mockito = "3.1.0"
     }
     const val junit4     = "junit:junit:${TestVersions.junit4}"
     const val testCore = "androidx.test:core:${TestVersions.androidXTest}"
@@ -100,4 +102,6 @@ object TestLibraries {
     const val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${TestVersions.coroutine}"
     const val coroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${TestVersions.coroutine}"
     const val coroutineKotlinTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${TestVersions.coroutine}"
+
+    const val mockito = "org.mockito:mockito-core:${TestVersions.mockito}"
 }
