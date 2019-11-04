@@ -22,7 +22,10 @@ abstract class BaseFragment : Fragment(), HasAndroidInjector {
     }
 
     override fun onAttach(context: Context) {
-        AndroidSupportInjection.inject(this)
+        if (isEnableInject()) {
+            AndroidSupportInjection.inject(this)
+        }
+
         super.onAttach(context)
         Timber.i("${javaClass.simpleName} : onAttach")
     }
@@ -89,4 +92,6 @@ abstract class BaseFragment : Fragment(), HasAndroidInjector {
     override fun androidInjector(): AndroidInjector<Any>? {
         return androidInjector
     }
+
+    open fun isEnableInject(): Boolean = true
 }
