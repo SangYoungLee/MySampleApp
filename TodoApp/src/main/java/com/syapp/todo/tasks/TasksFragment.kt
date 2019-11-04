@@ -8,9 +8,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.syapp.basecomponent.BaseFragment
+import com.syapp.basecomponent.event.EventObserver
 import com.syapp.todo.R
-import com.syapp.todo.base.BaseFragment
-import com.syapp.todo.base.event.EventObserver
 import com.syapp.todo.databinding.TasksFragmentBinding
 import com.syapp.todo.util.showSnackbar
 import javax.inject.Inject

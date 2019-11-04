@@ -1,4 +1,4 @@
-package com.syapp.todo.base
+package com.syapp.basecomponent
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

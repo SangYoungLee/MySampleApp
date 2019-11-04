@@ -1,4 +1,4 @@
-package com.syapp.todo.base
+package com.syapp.basecomponent
 
 import android.content.Context
 import android.os.Bundle

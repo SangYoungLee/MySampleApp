@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.syapp.todo.base.data.ChangeState
 import com.syapp.todo.base.data.Result
-import com.syapp.todo.base.viewmodel.BaseViewModel
+import com.syapp.basecomponent.viewmodel.BaseViewModel
 import com.syapp.todo.domain.DeleteTaskUseCase
 import com.syapp.todo.domain.GetTaskUseCase
 import kotlinx.coroutines.delay

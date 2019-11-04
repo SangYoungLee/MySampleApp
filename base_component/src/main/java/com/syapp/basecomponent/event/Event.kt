@@ -1,4 +1,4 @@
-package com.syapp.todo.base.event
+package com.syapp.basecomponent.event
 
 import androidx.lifecycle.Observer
 

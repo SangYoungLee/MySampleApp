@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.syapp.todo.base.data.Result
-import com.syapp.todo.base.viewmodel.BaseViewModel
+import com.syapp.basecomponent.viewmodel.BaseViewModel
 import com.syapp.todo.domain.GetTaskUseCase
 import com.syapp.todo.domain.SaveTaskUseCase
 import com.syapp.todo.entity.Task

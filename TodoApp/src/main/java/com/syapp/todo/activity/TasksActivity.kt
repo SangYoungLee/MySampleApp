@@ -7,8 +7,8 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import com.syapp.basecomponent.BaseActivity
 import com.syapp.todo.R
-import com.syapp.todo.base.BaseActivity
 
 class TasksActivity : BaseActivity() {
 

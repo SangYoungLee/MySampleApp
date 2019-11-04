@@ -2,7 +2,7 @@ package com.syapp.todo.activity
 
 import com.syapp.todo.addtask.AddTaskFragment
 import com.syapp.todo.addtask.AddTaskModuleBinds
-import com.syapp.todo.base.di.FragmentScope
+import com.syapp.basecomponent.di.FragmentScope
 import com.syapp.todo.detailtask.DetailTaskFragment
 import com.syapp.todo.detailtask.DetailTaskModuleBinds
 import com.syapp.todo.tasks.TasksFragment

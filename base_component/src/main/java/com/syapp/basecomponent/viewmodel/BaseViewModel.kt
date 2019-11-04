@@ -1,4 +1,4 @@
-package com.syapp.todo.base.viewmodel
+package com.syapp.basecomponent.viewmodel
 
 import androidx.lifecycle.ViewModel
 

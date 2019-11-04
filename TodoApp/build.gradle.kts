@@ -62,6 +62,8 @@ configure<BaseAppModuleExtension> {
 }
 
 dependencies {
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation(project(":base_component"))
 
     "implementation"(Libraries.kotlinStdLib)
     "implementation"(Libraries.appCompat)

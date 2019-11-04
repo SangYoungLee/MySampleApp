@@ -1,6 +1,6 @@
 package com.syapp.todo.activity
 
-import com.syapp.todo.base.BaseActivity
+import com.syapp.basecomponent.BaseActivity
 
 class TransparentActivity : BaseActivity() {
 

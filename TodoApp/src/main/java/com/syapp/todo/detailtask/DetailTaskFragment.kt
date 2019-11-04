@@ -7,8 +7,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.syapp.basecomponent.BaseFragment
 import com.syapp.todo.R
-import com.syapp.todo.base.BaseFragment
 import com.syapp.todo.databinding.DetailTaskFragmentBinding
 import com.syapp.todo.util.showSnackbar
 import javax.inject.Inject

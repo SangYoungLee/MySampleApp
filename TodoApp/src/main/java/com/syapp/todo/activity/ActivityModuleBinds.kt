@@ -1,6 +1,6 @@
 package com.syapp.todo.activity
 
-import com.syapp.todo.base.di.ActivityScope
+import com.syapp.basecomponent.di.ActivityScope
 import com.syapp.todo.base.viewmodel.ViewModelModuleBinds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

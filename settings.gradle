@@ -1,1 +1,1 @@
-include ':TodoApp', ':SyCamera'
+include ':TodoApp', ':SyCamera', ':ComponentTestApp', ':base_component'
