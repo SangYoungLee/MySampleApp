@@ -16,6 +16,8 @@ open class TodoApplication : DaggerApplication() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+
+        Timber.i("${javaClass.simpleName} onCreate Application")
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
