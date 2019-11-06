@@ -80,4 +80,9 @@ dependencies {
     "kapt"(Libraries.daggerAndroidProcessor)
 
     "implementation"(Libraries.timber)
+
+    "androidTestImplementation" (Libraries.appCompat)
+
+    "testImplementation" (TestLibraries.junit4)
+    "androidTestImplementation" (TestLibraries.junit4)
 }
