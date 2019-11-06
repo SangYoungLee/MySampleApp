@@ -1,6 +1,7 @@
-package com.syapp.componentbasicapp
+package com.syapp.componentbasicapp.app
 
 import android.app.Application
+import com.syapp.componentbasicapp.BuildConfig
 import timber.log.Timber
 
 /**

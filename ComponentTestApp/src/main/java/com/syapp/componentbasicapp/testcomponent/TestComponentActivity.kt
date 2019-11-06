@@ -1,17 +1,17 @@
-package com.syapp.componentbasicapp
+package com.syapp.componentbasicapp.testcomponent
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import com.syapp.basecomponent.BaseActivity
-import com.syapp.componentbasicapp.fragments.FirstFragment
-import com.syapp.componentbasicapp.fragments.SecondFragment
-import com.syapp.componentbasicapp.fragments.ThirdFragment
-import kotlinx.android.synthetic.main.main_activity.*
-import timber.log.Timber
+import com.syapp.componentbasicapp.R
+import com.syapp.componentbasicapp.testcomponent.fragments.FirstFragment
+import com.syapp.componentbasicapp.testcomponent.fragments.SecondFragment
+import com.syapp.componentbasicapp.testcomponent.fragments.ThirdFragment
+import kotlinx.android.synthetic.main.test_component_activity.*
 
-class MainActivity : BaseActivity(), View.OnClickListener {
+class TestComponentActivity : BaseActivity(), View.OnClickListener {
 
     private var firstFragment: FirstFragment? = null
     private var secondFragment: SecondFragment? = null
@@ -19,7 +19,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
+        setContentView(R.layout.test_component_activity)
 
         btn_first.setOnClickListener(this)
         btn_second.setOnClickListener(this)

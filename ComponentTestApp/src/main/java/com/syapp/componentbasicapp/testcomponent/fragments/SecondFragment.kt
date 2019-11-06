@@ -1,4 +1,4 @@
-package com.syapp.componentbasicapp.fragments
+package com.syapp.componentbasicapp.testcomponent.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,14 +10,14 @@ import com.syapp.componentbasicapp.R
 /**
  * Created By lsy2014 on 2019-11-04
  */
-class ThirdFragment : BaseFragment() {
+class SecondFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.third_fragment, container, false)
+        return inflater.inflate(R.layout.second_fragment, container, false)
     }
 
     override fun isEnableInject(): Boolean {
