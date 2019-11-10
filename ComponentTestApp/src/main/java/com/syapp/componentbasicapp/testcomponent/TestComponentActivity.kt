@@ -10,6 +10,7 @@ import com.syapp.componentbasicapp.testcomponent.fragments.FirstFragment
 import com.syapp.componentbasicapp.testcomponent.fragments.SecondFragment
 import com.syapp.componentbasicapp.testcomponent.fragments.ThirdFragment
 import kotlinx.android.synthetic.main.test_component_activity.*
+import timber.log.Timber
 
 class TestComponentActivity : BaseActivity(), View.OnClickListener {
 
@@ -41,6 +42,7 @@ class TestComponentActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
+        Timber.i("Transaction Start")
         when (v?.id ?: return) {
             R.id.btn_first -> {
                 if (firstFragment == null) {
@@ -86,6 +88,7 @@ class TestComponentActivity : BaseActivity(), View.OnClickListener {
                 }
             }
         }
+        Timber.i("Transaction End")
     }
 
     override fun isEnableInject(): Boolean {
