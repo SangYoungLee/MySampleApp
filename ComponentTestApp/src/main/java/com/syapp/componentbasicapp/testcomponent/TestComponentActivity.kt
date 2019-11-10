@@ -1,9 +1,12 @@
 package com.syapp.componentbasicapp.testcomponent
 
+import android.app.ActivityManager
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.core.content.getSystemService
 import com.syapp.basecomponent.BaseActivity
 import com.syapp.componentbasicapp.R
 import com.syapp.componentbasicapp.testcomponent.fragments.FirstFragment
@@ -39,6 +42,9 @@ class TestComponentActivity : BaseActivity(), View.OnClickListener {
                 val str = s?.toString()
             }
         })
+
+        val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as? ActivityManager
+        Timber.d("dalvik heap memory : ${activityManager?.largeMemoryClass}")
     }
 
     override fun onClick(v: View?) {
