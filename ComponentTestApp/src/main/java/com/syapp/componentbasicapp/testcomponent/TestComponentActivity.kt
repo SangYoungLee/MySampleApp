@@ -61,8 +61,9 @@ class TestComponentActivity : BaseActivity(), View.OnClickListener {
                 if (secondFragment == null) {
                     secondFragment = SecondFragment()
                     supportFragmentManager.beginTransaction()
-                        .add(R.id.container_contents, secondFragment!!)
-                        .commitNow()
+                        .addToBackStack("Second")
+                        .replace(R.id.container_contents, secondFragment!!)
+                        .commit()
                 } else {
                     supportFragmentManager.beginTransaction()
                         .remove(secondFragment!!)
@@ -75,7 +76,7 @@ class TestComponentActivity : BaseActivity(), View.OnClickListener {
                 if (thirdFragment == null) {
                     thirdFragment = ThirdFragment()
                     supportFragmentManager.beginTransaction()
-                        .add(R.id.container_contents, thirdFragment!!)
+                        .replace(R.id.container_contents, thirdFragment!!)
                         .commitNow()
                 } else {
                     supportFragmentManager.beginTransaction()
