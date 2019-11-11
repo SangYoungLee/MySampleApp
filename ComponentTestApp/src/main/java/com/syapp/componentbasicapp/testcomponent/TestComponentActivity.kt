@@ -1,5 +1,6 @@
 package com.syapp.componentbasicapp.testcomponent
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -24,6 +25,10 @@ class TestComponentActivity : BaseActivity(), View.OnClickListener {
         btn_first.setOnClickListener(this)
         btn_second.setOnClickListener(this)
         btn_third.setOnClickListener(this)
+
+        btn_go_to_sub.setOnClickListener {
+            startActivity(Intent(this, SubActivity::class.java))
+        }
 
         et_input.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(s: Editable?) {
