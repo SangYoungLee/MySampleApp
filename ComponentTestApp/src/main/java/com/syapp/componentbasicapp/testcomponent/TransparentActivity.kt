@@ -1,4 +1,4 @@
-package com.syapp.todo.activity
+package com.syapp.componentbasicapp.testcomponent
 
 import com.syapp.basecomponent.BaseActivity
 
