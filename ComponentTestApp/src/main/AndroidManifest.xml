@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.syapp.componentbasicapp">
+        xmlns:tools="http://schemas.android.com/tools"
+        package="com.syapp.componentbasicapp">
 
     <application
             android:allowBackup="true"
@@ -11,7 +11,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:name=".app.ComponentTestApplication"
-        tools:ignore="GoogleAppIndexingWarning">
+            tools:ignore="GoogleAppIndexingWarning">
         <activity android:name="com.syapp.componentbasicapp.testcomponent.TestComponentActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +20,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".structure.StructureActivity" />
+        <activity android:name=".testcomponent.SubActivity"
+                android:resizeableActivity="true"
+                android:supportsPictureInPicture="true"
+                android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"/>
         <activity android:name="com.syapp.componentbasicapp.testcomponent.TransparentActivity" android:theme="@style/Theme.Transparent"/>
     </application>
 

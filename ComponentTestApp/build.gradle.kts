@@ -79,6 +79,8 @@ dependencies {
     "implementation"(Libraries.daggerAndroidSupport)
     "kapt"(Libraries.daggerAndroidProcessor)
 
+    "implementation"(Libraries.moshi)
+
     "implementation"(Libraries.timber)
 
     "androidTestImplementation" (Libraries.appCompat)

@@ -1,6 +1,9 @@
 package com.syapp.componentbasicapp
 
 import org.junit.Test
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -13,10 +16,19 @@ class ExampleUnitTest {
 
     @Test
     fun testLateInitVar() {
-        mObj = TestObj(0)
+    }
 
-        mObj = TestObj(2)
+    @Test
+    fun testMoshi() {
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+        val jsonAdapter = moshi.adapter(TestObj::class.java)
+
+        val json = "{\"number\":123, \"str\":\"text\"}"
+        val testObj = jsonAdapter.fromJson(json)
+        println(testObj)
     }
 }
 
-data class TestObj(private val number: Int)
+data class TestObj(private val number: Int, private val str: String)

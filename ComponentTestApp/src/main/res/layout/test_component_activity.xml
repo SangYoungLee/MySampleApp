@@ -40,6 +40,14 @@
             app:layout_constraintLeft_toRightOf="@id/btn_second"
             app:layout_constraintTop_toTopOf="@id/btn_first"/>
 
+    <Button
+            android:id="@+id/btn_go_to_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go to SubActivity"
+            app:layout_constraintTop_toTopOf="@id/btn_first"
+            app:layout_constraintLeft_toRightOf="@id/btn_third"/>
+
     <FrameLayout
             android:id="@+id/container_contents"
             android:layout_width="0dp"

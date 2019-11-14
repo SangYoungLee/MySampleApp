@@ -32,6 +32,8 @@ object Versions {
 
     const val dagger = "2.24"
 
+    const val moshi = "1.9.1"
+
     const val cameraX = "1.0.0-alpha05"
 }
 
@@ -63,6 +65,8 @@ object Libraries {
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
     const val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
+
+    const val moshi = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
 
     const val timber = "com.jakewharton.timber:timber:4.7.1"
 

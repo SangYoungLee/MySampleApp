@@ -2,11 +2,11 @@ package com.syapp.componentbasicapp.testcomponent
 
 import android.app.ActivityManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import androidx.core.content.getSystemService
 import com.syapp.basecomponent.BaseActivity
 import com.syapp.componentbasicapp.R
 import com.syapp.componentbasicapp.testcomponent.fragments.FirstFragment
@@ -28,6 +28,10 @@ class TestComponentActivity : BaseActivity(), View.OnClickListener {
         btn_first.setOnClickListener(this)
         btn_second.setOnClickListener(this)
         btn_third.setOnClickListener(this)
+
+        btn_go_to_sub.setOnClickListener {
+            startActivity(Intent(this, SubActivity::class.java))
+        }
 
         et_input.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(s: Editable?) {
