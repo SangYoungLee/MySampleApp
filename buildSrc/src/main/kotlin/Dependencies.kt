@@ -33,6 +33,8 @@ object Versions {
     const val dagger = "2.24"
 
     const val cameraX = "1.0.0-alpha05"
+
+    const val brightcove = "6.9.0"
 }
 
 object Libraries {
@@ -68,6 +70,9 @@ object Libraries {
 
     const val cameraXCore = "androidx.camera:camera-core:${Versions.cameraX}"
     const val cameraXCamera2 = "androidx.camera:camera-camera2:${Versions.cameraX}"
+
+    const val brightcoveSDK = "com.brightcove.player:android-sdk:${Versions.brightcove}"
+    const val brightcoveExoPlayer = "com.brightcove.player:exoplayer2:${Versions.brightcove}"
 }
 
 object TestLibraries {
