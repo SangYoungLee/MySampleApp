@@ -9,8 +9,8 @@ object BuildPlugins {
 }
 
 object Versions {
-    const val gradleVersion = "3.5.0"
-    const val kotlinVersion = "1.3.50"
+    const val gradleVersion = "3.6.0"
+    const val kotlinVersion = "1.3.71"
 
     const val minSdkVersion = 21
     const val compileSdkVersion = 29
