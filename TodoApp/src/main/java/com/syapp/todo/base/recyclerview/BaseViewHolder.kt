@@ -1,4 +1,4 @@
-package com.syapp.todo.base
+package com.syapp.todo.base.recyclerview
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -8,5 +8,7 @@ abstract class BaseViewHolder<T>(itemView: View)
 
     abstract fun onBindData(data: T)
 
-    abstract fun onRecycled()
+    fun onRecycled() {
+
+    }
 }
