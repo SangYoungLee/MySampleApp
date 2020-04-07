@@ -15,10 +15,10 @@ class TasksAdapter(tasksViewModel: TasksViewModel)
 }
 
 class TaskHolder(private val binding: TasksListItemBinding)
-    : BaseViewHolder<Task>(binding.root) {
+    : BaseViewHolder(binding.root) {
 
     class Creator : HolderCreator {
-        override fun createHolder(parent: ViewGroup, viewModel: BaseViewModel?): BaseViewHolder<*> {
+        override fun createHolder(parent: ViewGroup, viewModel: BaseViewModel?): BaseViewHolder {
             val binding = TasksListItemBinding.inflate(LayoutInflater.from(parent.context),
                 parent, false)
             binding.viewModel = viewModel as TasksViewModel
@@ -26,8 +26,8 @@ class TaskHolder(private val binding: TasksListItemBinding)
         }
     }
 
-    override fun onBindData(data: Task) {
-        binding.task = data
+    override fun onBindData(data: Any) {
+        binding.task = data as Task
         // Binding 기다리지않고, 즉시 실행
         binding.executePendingBindings()
     }

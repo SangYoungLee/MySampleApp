@@ -25,5 +25,5 @@ class ItemKind private constructor(
 }
 
 interface HolderCreator {
-    fun createHolder(parent: ViewGroup, viewModel: BaseViewModel?): BaseViewHolder<*>
+    fun createHolder(parent: ViewGroup, viewModel: BaseViewModel?): BaseViewHolder
 }

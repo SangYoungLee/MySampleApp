@@ -5,23 +5,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.syapp.basecomponent.viewmodel.BaseViewModel
 
 abstract class BaseRecycleAdapter<T>(protected val viewModel: BaseViewModel? = null)
-    : RecyclerView.Adapter<BaseViewHolder<T>>() {
+    : RecyclerView.Adapter<BaseViewHolder>() {
 
     private val adapterItems: MutableList<BaseItem<T>> = arrayListOf()
-    val rawItems: List<BaseItem<T>>
-        get() = adapterItems
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<T> {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         val itemKind = ItemKind.getItemKind(viewType)
         val holder = itemKind?.holderCreator?.createHolder(parent, viewModel)
-        return holder as? BaseViewHolder<T> ?: throw IllegalStateException("Holder Cast Error")
+        return holder ?: throw IllegalStateException("Holder Cast Error")
     }
 
-    override fun onBindViewHolder(holder: BaseViewHolder<T>, position: Int) {
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         holder.onBindData(adapterItems.getOrNull(position)?.data ?: return)
     }
 
-    override fun onViewRecycled(holder: BaseViewHolder<T>) {
+    override fun onViewRecycled(holder: BaseViewHolder) {
         holder.onRecycled()
     }
 
