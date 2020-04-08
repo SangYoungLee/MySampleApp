@@ -31,6 +31,8 @@ object Versions {
     const val navigation = "2.1.0"
 
     const val dagger = "2.24"
+    const val rxJava = "3.0.2"
+    const val rxAndroid = "3.0.0"
 
     const val moshi = "1.9.1"
 
@@ -65,6 +67,9 @@ object Libraries {
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
     const val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
+
+    const val rxJava = "io.reactivex.rxjava3:rxjava:${Versions.rxJava}"
+    const val rxAndroid = "io.reactivex.rxjava3:rxandroid:${Versions.rxAndroid}"
 
     const val moshi = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
 

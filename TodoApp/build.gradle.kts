@@ -90,6 +90,9 @@ dependencies {
     "implementation"(Libraries.daggerAndroidSupport)
     "kapt"(Libraries.daggerAndroidProcessor)
 
+    "implementation"(Libraries.rxJava)
+    "implementation"(Libraries.rxAndroid)
+
     "implementation"(Libraries.timber)
 
     /*************** Test Libraries *****************/

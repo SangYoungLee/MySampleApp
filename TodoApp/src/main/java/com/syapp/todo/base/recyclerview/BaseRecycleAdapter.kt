@@ -12,7 +12,7 @@ abstract class BaseRecycleAdapter<T>(protected val viewModel: BaseViewModel? = n
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         val itemKind = ItemKind.getItemKind(viewType)
         val holder = itemKind?.holderCreator?.createHolder(parent, viewModel)
-        return holder ?: throw IllegalStateException("Holder Cast Error")
+        return holder ?: throw IllegalStateException("Holder Create Error")
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
