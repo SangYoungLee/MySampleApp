@@ -1,5 +1,6 @@
 package com.syapp.todo.activity
 
+import android.Manifest
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -9,6 +10,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.syapp.basecomponent.BaseActivity
 import com.syapp.todo.R
+import com.syapp.todo.util.PermissionManager
+import com.syapp.todo.util.showSnackbar
 
 class TasksActivity : BaseActivity() {
 
@@ -28,6 +31,18 @@ class TasksActivity : BaseActivity() {
         setupActionBarWithNavController(navController, appbarConfiguration)
 
         findViewById<NavigationView>(R.id.navigation_view).setupWithNavController(navController)
+
+        PermissionManager(supportFragmentManager)
+            .request(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .subscribe({ permissionResult ->
+                if (permissionResult.isGranted) {
+                    window.decorView.showSnackbar("is All Granted")
+                } else if (!permissionResult.shouldShowRequestPermissionRationale) {
+                    window.decorView.showSnackbar("should Show RequestPermission Rationale")
+                } else {
+                    window.decorView.showSnackbar("else?")
+                }
+            }, Throwable::printStackTrace)
     }
 
     override fun onSupportNavigateUp(): Boolean {
