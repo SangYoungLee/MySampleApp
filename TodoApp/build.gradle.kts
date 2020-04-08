@@ -92,6 +92,7 @@ dependencies {
 
     "implementation"(Libraries.rxJava)
     "implementation"(Libraries.rxAndroid)
+    "implementation"(Libraries.rxPermissions)
 
     "implementation"(Libraries.timber)
 

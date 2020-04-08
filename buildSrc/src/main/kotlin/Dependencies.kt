@@ -33,6 +33,7 @@ object Versions {
     const val dagger = "2.24"
     const val rxJava = "3.0.2"
     const val rxAndroid = "3.0.0"
+    const val rxPermission = "0.10.2"
 
     const val moshi = "1.9.1"
 
@@ -70,6 +71,7 @@ object Libraries {
 
     const val rxJava = "io.reactivex.rxjava3:rxjava:${Versions.rxJava}"
     const val rxAndroid = "io.reactivex.rxjava3:rxandroid:${Versions.rxAndroid}"
+    const val rxPermissions = "com.github.tbruyelle:rxpermissions:${Versions.rxPermission}"
 
     const val moshi = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
 
