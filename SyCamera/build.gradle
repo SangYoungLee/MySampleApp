@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+android {
+    compileSdkVersion rootProject.ext.versions.compile_sdk_version
+
+    defaultConfig {
+        applicationId = "com.syapp.sycamera"
+        minSdkVersion rootProject.ext.versions.min_sdk_version
+        targetSdkVersion rootProject.ext.versions.target_sdk_version
+        versionCode rootProject.ext.versions.version_code
+        versionName rootProject.ext.versions.version_name
+
+        testInstrumentationRunner "com.syapp.todo.CustomTestRunner"
+    }
+
+    sourceSets {
+        String sharedTestDir = 'src/sharedTest/java'
+        test {
+            java.srcDir sharedTestDir
+        }
+        androidTest {
+            java.srcDir sharedTestDir
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            signingConfig signingConfigs.debug
+            debuggable true
+            minifyEnabled false
+        }
+    }
+
+    dataBinding {
+        isEnabled true
+        isEnabledForTests true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
+    implementation "androidx.appcompat:appcompat:${versions.jetpack}"
+    implementation "androidx.core:core-ktx:${versions.ktx}"
+    implementation "androidx.constraintlayout:constraintlayout:${versions.constraint_layout}"
+
+    kapt "com.android.databinding:compiler:${versions.gradle}"
+
+    implementation "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}"
+    kapt "androidx.lifecycle:lifecycle-compiler:${versions.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}"
+
+    implementation "androidx.camera:camera-core:${versions.camera_x}"
+    implementation "androidx.camera:camera-camera2:${versions.camera_x}"
+}

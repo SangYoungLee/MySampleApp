@@ -1,0 +1,81 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.versions.compile_sdk_version
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.versions.min_sdk_version
+        targetSdkVersion rootProject.ext.versions.target_sdk_version
+        versionCode rootProject.ext.versions.version_code
+        versionName rootProject.ext.versions.version_name
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            signingConfig signingConfigs.debug
+            debuggable true
+            minifyEnabled false
+        }
+    }
+
+    dataBinding {
+        isEnabled true
+        isEnabledForTests true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
+    implementation "androidx.appcompat:appcompat:${versions.jetpack}"
+    implementation "androidx.core:core-ktx:${versions.ktx}"
+    implementation "androidx.constraintlayout:constraintlayout:${versions.constraint_layout}"
+
+    kapt "com.android.databinding:compiler:${versions.gradle}"
+
+    implementation "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}"
+    kapt "androidx.lifecycle:lifecycle-compiler:${versions.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}"
+
+    implementation "androidx.room:room-runtime:${versions.room}"
+    kapt "androidx.room:room-compiler:${versions.room}"
+    implementation "androidx.room:room-ktx:${versions.room}"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:${versions.navigation}"
+    implementation "androidx.navigation:navigation-ui-ktx:${versions.navigation}"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutine}"
+
+    implementation "com.google.dagger:dagger:${versions.dagger}"
+    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
+    implementation "com.google.dagger:dagger-android-support:${versions.dagger}"
+    kapt "com.google.dagger:dagger-android-processor:${versions.dagger}"
+
+    implementation "com.jakewharton.timber:timber:4.7.1"
+
+    implementation "androidx.fragment:fragment:${versions.fragment}"
+    implementation "androidx.fragment:fragment-ktx:${versions.fragment}"
+    implementation "androidx.fragment:fragment-testing:${versions.fragment}"
+}
