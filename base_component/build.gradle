@@ -1,10 +1,13 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+plugins {
+    id "com.android.library"
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+}
 
 android {
     compileSdkVersion rootProject.ext.versions.compile_sdk_version
+    buildToolsVersion rootProject.ext.versions.build_tools_version
 
     defaultConfig {
         minSdkVersion rootProject.ext.versions.min_sdk_version
@@ -17,31 +20,21 @@ android {
 
     buildTypes {
         release {
-            debuggable false
-            minifyEnabled true
-            zipAlignEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-
-        debug {
-            signingConfig signingConfigs.debug
-            debuggable true
-            minifyEnabled false
-        }
     }
-
-    dataBinding {
-        isEnabled true
-        isEnabledForTests true
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        dataBinding true
     }
 }
 
@@ -63,8 +56,8 @@ dependencies {
     kapt "androidx.room:room-compiler:${versions.room}"
     implementation "androidx.room:room-ktx:${versions.room}"
 
-    implementation "androidx.navigation:navigation-fragment-ktx:${versions.navigation}"
-    implementation "androidx.navigation:navigation-ui-ktx:${versions.navigation}"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.1"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.1"
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutine}"
 

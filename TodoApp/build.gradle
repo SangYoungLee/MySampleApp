@@ -1,11 +1,14 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'androidx.navigation.safeargs.kotlin'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
 
 android {
     compileSdkVersion rootProject.ext.versions.compile_sdk_version
+    buildToolsVersion rootProject.ext.versions.build_tools_version
 
     defaultConfig {
         applicationId "com.syapp.todo"
@@ -29,22 +32,13 @@ android {
 
     buildTypes {
         release {
-            debuggable false
-            minifyEnabled true
-            zipAlignEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-
-        debug {
-            signingConfig signingConfigs.debug
-            debuggable true
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
-    dataBinding {
-        isEnabled true
-        isEnabledForTests true
+    buildFeatures {
+        dataBinding true
     }
 
     compileOptions {
@@ -67,58 +61,58 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:${versions.constraint_layout}"
 
     kapt "com.android.databinding:compiler:${versions.gradle}"
-    
+
     implementation "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}"
     kapt "androidx.lifecycle:lifecycle-compiler:${versions.lifecycle}"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}"
-    
+
     implementation "androidx.room:room-runtime:${versions.room}"
     kapt "androidx.room:room-compiler:${versions.room}"
     implementation "androidx.room:room-ktx:${versions.room}"
-    
-    implementation "androidx.navigation:navigation-fragment-ktx:${versions.navigation}"
-    implementation "androidx.navigation:navigation-ui-ktx:${versions.navigation}"
-    
+
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.1"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.1"
+
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutine}"
 
     implementation "com.google.dagger:dagger:${versions.dagger}"
     kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
     implementation "com.google.dagger:dagger-android-support:${versions.dagger}"
     kapt "com.google.dagger:dagger-android-processor:${versions.dagger}"
-    
+
     implementation "com.jakewharton.timber:timber:4.7.1"
 
     /*************** Test Libraries *****************/
 
 
-    
+
     androidTestImplementation "androidx.appcompat:appcompat:${versions.jetpack}"
-    
+
     testImplementation "junit:junit:${versions.junit4}"
     androidTestImplementation "junit:junit:${versions.junit4}"
-    
+
     implementation "androidx.test:core:${versions.android_x_test}"
     testImplementation "androidx.test:core-ktx:${versions.android_x_test}"
     androidTestImplementation "androidx.test:core-ktx:${versions.android_x_test}"
-    
+
     testImplementation "androidx.test:runner:${versions.android_x_test}"
     androidTestImplementation "androidx.test:runner:${versions.android_x_test}"
-    
+
     testImplementation "androidx.test.ext:junit-ktx:${versions.android_x_test_ext_kotlin}"
     androidTestImplementation "androidx.test.ext:junit-ktx:${versions.android_x_test_ext_kotlin}"
-    
+
     testImplementation "androidx.arch.core:core-testing:${versions.test_arch}"
-    
+
     testImplementation "androidx.test.espresso:espresso-core:${versions.espresso}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${versions.espresso}"
-    
+
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.coroutine}"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutine}"
     androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.coroutine}"
-    
+
     kaptAndroidTest "com.google.dagger:dagger-compiler:${versions.dagger}"
     kaptTest "com.google.dagger:dagger-compiler:${versions.dagger}"
-    
+
     testImplementation "org.mockito:mockito-core:${versions.mockito}"
     androidTestImplementation "org.mockito:mockito-core:${versions.mockito}"
 }

@@ -1,11 +1,14 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'androidx.navigation.safeargs.kotlin'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
 
 android {
     compileSdkVersion rootProject.ext.versions.compile_sdk_version
+    buildToolsVersion rootProject.ext.versions.build_tools_version
 
     defaultConfig {
         applicationId = "com.syapp.sycamera"
@@ -42,9 +45,13 @@ android {
         }
     }
 
-    dataBinding {
-        isEnabled true
-        isEnabledForTests true
+    signingConfigs {
+        debug {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file("../debug.keystore")
+            storePassword 'android'
+        }
     }
 
     compileOptions {
@@ -54,6 +61,10 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    buildFeatures {
+        dataBinding true
     }
 }
 
