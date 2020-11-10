@@ -1,0 +1,44 @@
+ext.versions = [:]
+
+// versions
+def versions = [:]
+
+//Build Plugins
+versions.kotlin = '1.4.10'
+versions.gradle = '4.1.0'
+
+// Android Base
+versions.min_sdk_version = 21
+versions.compile_sdk_version = 29
+versions.target_sdk_version = 29
+versions.build_tools_version = '30.0.2'
+
+versions.version_code = 1
+versions.version_name = '0.1'
+
+// Library
+versions.jetpack = '1.2.0'
+versions.constraint_layout = '2.0.4'
+versions.ktx = '1.3.2'
+versions.coroutine = '1.3.1'
+
+versions.fragment = '1.2.5'
+versions.lifecycle = '2.2.0'
+versions.room = '2.3.0-alpha03'
+versions.nav_graph = '2.1.0'
+
+versions.dagger = '2.29.1'
+versions.camera_x = '1.0.0-beta11'
+
+// Test Library
+versions.junit4 = '4.13.1'
+versions.android_x_test = '1.3.0'
+versions.android_x_test_ext_kotlin = '1.1.2'
+
+versions.espresso = '3.3.0'
+
+versions.test_arch = '2.1.0'
+
+versions.mokito = '3.1.0'
+
+ext.versions = versions
